@@ -63,12 +63,15 @@ app.set('views', './views');
 app.use(express.static(path.join(__dirname, 'public')));
 
 // routes
-
 app.use('/', require('./routes/index'));
 app.use('/auth', require('./routes/auth'));
 app.use('/stories', require('./routes/stories'));
 app.use('/api/workouts', workoutRoutes);
 app.use('/api/user', userRoutes);
+
+//route for javascript -files
+app.use('/', express.static(__dirname + '/'));
+
 // connect to db
 mongoose
   .connect(process.env.MONGO_URI)
@@ -81,4 +84,5 @@ mongoose
   })
   .catch((err) => {
     console.log(err);
-  });
+});
+

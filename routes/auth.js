@@ -14,7 +14,7 @@ const createToken = (_id) => {
 // @route   GET /auth/login
 router.get('/login', ensureGuest, (req, res) => {
   res.render('auth/login', {
-    layout: 'home',
+    layout: 'main',
   });
 });
 
@@ -28,7 +28,7 @@ router.post('/login', async (req, res) => {
     // create a token
     const token = createToken(user._id);
     res.cookie('cookieToken', token, { httpOnly: true });
-    res.redirect('/dashboard');
+    res.redirect('/etusivu_opiskelija');
   } catch (error) {
     res.send(
       `<p>${error.message}</p><p>Error. <a href="/">Go back home.</a></p>`
@@ -47,7 +47,7 @@ router.get('/logout', (req, res) => {
 // @route   GET /auth/register
 router.get('/register', ensureGuest, (req, res) => {
   res.render('auth/register', {
-    layout: 'home',
+    layout: 'main',
   });
 });
 
@@ -62,7 +62,7 @@ router.post('/register', async (req, res, next) => {
     // create a token
     const token = createToken(user._id);
     res.cookie('cookieToken', token, { httpOnly: true });
-    res.redirect('/dashboard');
+    res.redirect('/etusivu_opiskelija');
   } catch (error) {
     res.send(
       `<p>${error.message}</p><p>Error. <a href="/">Go back home.</a></p>`

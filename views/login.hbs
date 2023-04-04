@@ -1,0 +1,23 @@
+<div class="wrapper">
+    <div class="title"><img src="kuvat/Muuvi-logo.png" alt="logo"></div>
+    <form action="/auth/login" method="POST">
+        <div class="field">
+            <input type="email" name="email">
+            <label>Sähköposti tai käyttäjätunnus</label>
+        </div>
+        <div class="field">
+            <input type="password" name="password" required>
+            <label>Salasana</label>
+        </div>
+        <div class="content">
+            <div class="checkbox">
+                <input type="checkbox" id="remember-me">
+                <label for="remember-me">Muista minut</label>
+            </div>
+            <div class="pass-link"><a href="#">Unohtuiko salasana?</a></div>
+        </div>
+        <div class="field">
+            <input type="submit" value="Kirjaudu">
+        </div>
+    </form>
+</div>
