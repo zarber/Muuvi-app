@@ -13,6 +13,13 @@ html,body{
   background: #f2f2f2;
   /* background: linear-gradient(-135deg, #c850c0, #4158d0); */
 }
+
+h1 {
+  margin-top: 1em;
+  text-align: center;
+  font-weight: 500;
+}
+
 ::selection{
   background: #2ec4b6;
   color: #fff;
@@ -133,5 +140,23 @@ form .signup-link a{
 }
 form .pass-link a:hover,
 form .signup-link a:hover{
+  text-decoration: underline;
+}
+
+#registeration {
+  display:inline-block;
+  padding: 0.5em 1em 0em 1em;
+  height: 2.5em;
+  margin-top: 1em;
+  margin-left: 0.5em;
+  border-radius: 20px;
+  text-decoration:none;
+  justify-content: center;
+  font-size: 18px;
+  background-color: #2EC4B6;
+  color: #fff;
+}
+
+#registeration:hover {
   text-decoration: underline;
 }

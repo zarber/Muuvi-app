@@ -1,27 +1,20 @@
-{{!-- views/auth/signup.hbs --}}
-
-<div id="form">
-  <h2>Signup</h2>
-  <form action="/auth/register" method="POST">
-
-    <label> Username
-      <input type="text" name="username" placeholder="Matti" />
-    </label>
-
-    <label> Email
-      <input type="email" name="email" placeholder="matti@matti.com" />
-    </label>
-
-    <label> Password
-      <input type="password" name="password" placeholder="********" />
-    </label>
-
-    <button type="submit">Create account</button>
-
-    {{!-- error message will be added here --}}
-
-    {{#if errorMessage}}
-      <p class="error">{{errorMessage}}</p>
-    {{/if}}
-  </form>
+<div class="wrapper">
+    <div class="title"><img src="/kuvat/Muuvi-logo.png" alt="logo"></div>
+    <form action="/auth/register" method="POST">
+      <h1>Rekiströityminen</h1>
+        <div class="field">
+          <input type="email" name="email" />
+          <label> Sähköposti</label>
+        </div>
+        <div class="field">
+          <input type="password" name="password" />
+          <label> Salasana</label>
+        </div>
+        <div class="field">
+          <input type="submit" value="Tallenna">
+        </div>
+      {{#if errorMessage}}
+        <p class="error">{{errorMessage}}</p>
+      {{/if}}
+    </form>
 </div>

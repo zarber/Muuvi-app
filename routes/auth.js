@@ -47,7 +47,7 @@ router.get('/logout', (req, res) => {
 // @route   GET /auth/register
 router.get('/register', ensureGuest, (req, res) => {
   res.render('auth/register', {
-    layout: 'main',
+    layout: 'registeration',
   });
 });
 

@@ -3,7 +3,7 @@
     <form action="/auth/login" method="POST">
         <div class="field">
             <input type="email" name="email">
-            <label>Sähköposti tai käyttäjätunnus</label>
+            <label>Sähköposti</label>
         </div>
         <div class="field">
             <input type="password" name="password" required>
@@ -15,6 +15,9 @@
                 <label for="remember-me">Muista minut</label>
             </div>
             <div class="pass-link"><a href="#">Unohtuiko salasana?</a></div>
+        </div>
+        <div>
+            <a id="registeration" href="/auth/register">Rekiströidy</a>
         </div>
         <div class="field">
             <input type="submit" value="Kirjaudu">
