@@ -64,4 +64,10 @@ router.get('/etusivu_ammattilainen', (req, res) => {
   });
 });
 
+router.get('/hrv_measurements', (req, res) => {
+  res.render('hrv_measurements', {
+    layout: 'hrv_measurements',
+  });
+});
+
 module.exports = router;

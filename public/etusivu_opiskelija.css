@@ -63,9 +63,11 @@ h3 {
 #logo {
     width: 150px;
     height: 55px;
-    margin-top: 0.5em;
-    margin-right: 2em;
-    padding-left: 0.5em;
+}
+
+#mainpage {
+    background-color: #FF8055;
+    padding: 0;
 }
 
 #aphorism {
@@ -208,8 +210,26 @@ h3 {
 }
 
 #hrv_measurement_button { 
-    width: 200px;
-    height: 50px;
+    display:inline-block;
+    padding: 1em 1em 1em 1em;
+    border: 0;
+    border-radius: 18px;
+    text-decoration:none;
+    color: black;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px;
+    font-weight:700;
+    background-color: #FFEDD8;
+    text-align:center;
+    transition: all 0.15s;
+}
+
+#hrv_measurement_button:hover{
+    color:#2EC4B6;
+}
+
+#hrv_measurement_button:active{
+    color:#FF8055;
 }
 
 #diary_save {
@@ -238,12 +258,10 @@ body button {
 
 body button:hover{
     color:#2EC4B6;
-    border-color:#2EC4B6;
 }
 
 body button:active{
     color:#FF8055;
-    border-color:#FF8055;
 }
 
 #emojis {
