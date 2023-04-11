@@ -3,6 +3,17 @@ body {
     font-family: 'Quicksand', sans-serif;
 }
 
+.grid-container {
+    min-height: 100vh;
+    display: grid;
+    grid-template-areas:
+      'header header header header header header'
+      'main main main right right right'
+      'footer footer footer footer footer footer';
+    row-gap: 1em;
+    background-color: white
+}
+
 .items{
     width: 100%;
 }
@@ -68,30 +79,14 @@ th, td{
     float: left;
 }
 
-.grid-container {
-    min-height: 100vh;
-    display: grid;
-    grid-template-areas:
-      'header header header header header header'
-      'main main main right right right'
-      'footer footer footer footer footer footer';
-    row-gap: 1em;
-    background-color: white
-}
-
 .footer {
     grid-area: footer;
 }
 
-
 #logo {
     width: 150px;
     height: 55px;
-    margin-top: 0.5em;
-    margin-right: 2em;
-    padding-left: 0.5em;
 }
-
 
 body button {
     display:inline-block;
