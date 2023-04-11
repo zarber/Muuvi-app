@@ -1,10 +1,9 @@
 const mongoose = require('mongoose');
 
-const StorySchema = new mongoose.Schema({
-  title: {
+const DiarySchema = new mongoose.Schema({
+  diary_date: {
     type: String,
     required: true,
-    trim: true,
   },
   body: {
     type: String,
@@ -12,12 +11,16 @@ const StorySchema = new mongoose.Schema({
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'UserModel',
+    ref: 'userModel',
   },
   createdAt: {
     type: Date,
     default: Date.now,
   },
+  emojiClass: {
+    type: String,
+    default: '',
+  },
 });
 
-module.exports = mongoose.model('Story', StorySchema);
+module.exports = mongoose.model('Diary', DiarySchema);

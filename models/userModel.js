@@ -20,19 +20,19 @@ const userSchema = new Schema({
 userSchema.statics.signup = async function (email, password) {
   // validation
   if (!email || !password) {
-    throw Error('All fields must be filled');
+    throw Error('Täytä kaikki kentät!');
   }
   if (!validator.isEmail(email)) {
-    throw Error('Email not valid');
+    throw Error('Virheellinen sähköposti');
   }
   if (!validator.isStrongPassword(password)) {
-    throw Error('Password not strong enough');
+    throw Error('Salasana ei ole tarpeeksi vahva');
   }
 
   const exists = await this.findOne({ email });
 
   if (exists) {
-    throw Error('Sähköposti already in use');
+    throw Error('Sähköposti on jo käytössä');
   }
 
   const salt = await bcrypt.genSalt(10);
@@ -46,12 +46,12 @@ userSchema.statics.signup = async function (email, password) {
 // static login method
 userSchema.statics.login = async function (email, password) {
   if (!email || !password) {
-    throw Error('All fields must be filled');
+    throw Error('Täytä kaikki kentät!');
   }
 
   const user = await this.findOne({ email });
   if (!user) {
-    throw Error('Incorrect email');
+    throw Error('Väärä sähköposti');
   }
 
   const match = await bcrypt.compare(password, user.password);

@@ -10,7 +10,7 @@ body {
     display: grid;
     grid-template-areas:
       'header header header header header header'
-      'main main main right right right'
+      ''main main main right right right''
       'footer footer footer footer footer footer';
     row-gap: 1em;
     background-color: white
