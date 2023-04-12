@@ -11,6 +11,7 @@ const favicon = require('serve-favicon');
 const methodOverride = require('method-override');
 const workoutRoutes = require('./routes/api/workouts');
 const userRoutes = require('./routes/user');
+const diaryEntriesRoutes = require('./routes/diaryEntries');
 
 mongoose.set('strictQuery', true);
 // express app
@@ -65,9 +66,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 // routes
 app.use('/', require('./routes/index'));
 app.use('/auth', require('./routes/auth'));
-app.use('/stories', require('./routes/stories'));
+app.use('/activities_and_diary', require('./routes/diaryEntries'));
 app.use('/api/workouts', workoutRoutes);
 app.use('/api/user', userRoutes);
+app.use('/diaryEntries', diaryEntriesRoutes);
 
 //route for javascript -files
 app.use('/', express.static(__dirname + '/'));
@@ -85,4 +87,5 @@ mongoose
   .catch((err) => {
     console.log(err);
 });
+app.use(express.urlencoded({ extended: true }));
 
