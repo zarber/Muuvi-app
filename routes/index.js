@@ -46,15 +46,21 @@ router.get('/dashboard', ensureAuth, async (req, res) => {
   }
 });
 
-router.get('/activities_and_diary', (req, res) => {
+router.get('/aktiviteetit_ja_paivakirja', (req, res) => {
   res.render('activities_and_diary', {
     layout: 'activities_and_diary',
   });
 });
 
-router.get('/excercise_plan', (req, res) => {
+router.get('/liikuntasuunnitelma', (req, res) => {
   res.render('excercise_plan', {
     layout: 'excercise_plan',
+  });
+});
+
+router.get('/liikuntasuunnitelma_potilas', (req, res) => {
+  res.render('student_excercise_plan', {
+    layout: 'student_excercise_plan',
   });
 });
 
@@ -64,7 +70,13 @@ router.get('/etusivu_ammattilainen', (req, res) => {
   });
 });
 
-router.get('/hrv_measurements', (req, res) => {
+router.get('/potilaslista', (req, res) => {
+  res.render('patientlist', {
+    layout: 'patientlist',
+  });
+});
+
+router.get('/hrv_mittaukset', (req, res) => {
   res.render('hrv_measurements', {
     layout: 'hrv_measurements',
   });
