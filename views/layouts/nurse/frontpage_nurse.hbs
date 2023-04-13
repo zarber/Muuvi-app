@@ -2,9 +2,8 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Päiväkirja</title>
-    <link rel="stylesheet" href="paivakirja_potilas.css">
-    <link rel="stylesheet" href="etusivu_opiskelija.css">
+    <title>Etusivu</title>
+    <link rel="stylesheet" href="css/nurse/frontpage_nurse.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
@@ -12,11 +11,8 @@
   </head>
   <body> 
     <div class="grid-container">
-    {{> nav_student}}
+    {{> nav_nurse}}
     {{{body}}}
     </div>
-    <script src="/paivakirja_potilas.js"></script>
-    <script src="/etusivu_opiskelija.js"></script>
-    <script src="/diaryEntries.js"></script>
   </body>
 </html>
