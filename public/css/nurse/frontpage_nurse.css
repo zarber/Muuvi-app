@@ -4,12 +4,11 @@ body {
 }
 
 .grid-container {
-    width: 100%;
-    height: 100%;
+    min-height: 100vh;
     display: grid;
     grid-template-areas:
       'header header header header header header'
-      'main main main right right right'
+      'main main main main right right'
       'footer footer footer footer footer footer';
     row-gap: 1em;
     background-color: white
@@ -68,8 +67,9 @@ body {
     text-align: center;
 }
 
-#hrv_data {
-    width: 70%;
+#hrv_chart {
+    width: 85%;
+    height: 100%;
 }
 
 #more_details {

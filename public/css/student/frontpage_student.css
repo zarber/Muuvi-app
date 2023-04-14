@@ -32,7 +32,7 @@ h3 {
     display:inline-block;
     padding: 0.5em 1em 0em 1em;
     height: 2.4em;
-    margin-top: 1.2em;
+    margin-top: 1.3em;
     margin-left: 0.5em;
     border-radius: 18px;
     text-decoration:none;
@@ -63,6 +63,7 @@ h3 {
 #logo {
     width: 150px;
     height: 55px;
+    margin-bottom: 0.4em;
 }
 
 #mainpage {
@@ -113,6 +114,11 @@ h3 {
     width: 60%;
 }
 
+#helpModalFrontPageImg {
+    width: 100%;
+    height: 100%;
+}
+
 .modal-contentHelp  {
     background-color: #FFEDD8;
     margin: 10% auto;
@@ -123,6 +129,11 @@ h3 {
     width: 60%;
     height: 60%;
     overflow-y: auto;
+}
+
+#helpModalNavigationImg {
+    width: 100%;
+    height: 100%;
 }
 
 .modal-contentHelp::-webkit-scrollbar {
@@ -193,20 +204,18 @@ h3 {
     grid-area: right;   
 }
 
-.footer {
-    grid-area: footer;
-}
-
 #hrv_text {
     text-align: center;
 }
 
 #hrv_measurement {
-    width: 70%;
+    margin-bottom: 2em;
+    width: 50%;
 }
 
-#hrv_data {
-    width: 70%;
+#student_hrv_chart {
+    width: 85%;
+    height: 80%;
 }
 
 #hrv_measurement_button { 
@@ -309,10 +318,11 @@ form textarea {
 }
 
 .footer {
+    grid-area: footer;
+    margin-top: 2em;
     background-color:#2EC4B6;
-    margin-top: 5%;
     width: 100%;
-    height: 6em;
+    height: 5em;
 }
 
 @media only screen and (max-width: 1150px) {
