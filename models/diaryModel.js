@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const DiarySchema = new mongoose.Schema({
   diary_date: {
-    type: String,
+    type: Date,
     required: true,
   },
   body: {

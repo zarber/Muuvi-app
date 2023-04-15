@@ -2,6 +2,51 @@ document.addEventListener('DOMContentLoaded', () => {
   const diaryForm = document.querySelector('form');
   const diaryEntries = document.querySelector('#diary_entries');
 
+  diaryEntries.addEventListener('click', (event) => {
+    const listItem = event.target.closest('li');
+    if (listItem) {
+      const diaryEntryId = listItem.dataset.id;
+      showDiaryEntry(diaryEntryId);
+    }
+
+  });
+
+  const loadMoreButton = document.querySelector('#load-more');
+
+loadMoreButton.addEventListener('click', async () => {
+  const skip = document.querySelectorAll('#diary_entries li').length;
+  await fetchDiaryEntries(skip);
+});
+
+  fetchDiaryEntries();
+  
+  function addNewDiaryEntryToDOM(diaryEntry) {
+
+    console.log('Diary Entry:', diaryEntry);
+
+    const listItem = document.createElement('li');
+    listItem.dataset.id = diaryEntry._id;
+  
+    const diaryDate = new Date(diaryEntry.diary_date);
+    const formattedDate = diaryDate.toLocaleDateString('fi-FI');
+    listItem.textContent = `${formattedDate} - ${diaryEntry.body}`;
+    const emojiSpan = document.createElement('span');
+    emojiSpan.className = diaryEntry.emojiClass;
+    listItem.appendChild(emojiSpan);
+    diaryEntries.prepend(listItem);
+  }
+  
+// TOIMII ILMAN TÄTÄ KOODIA
+  // function addNewDiaryEntryToDOM(diaryEntry) {
+  //   const listItem = document.createElement('li');
+  //   listItem.dataset.id = diaryEntry._id;
+  //   listItem.textContent = `${new Date(diaryEntry.diary_date).toLocaleDateString('fi-FI')} - ${diaryEntry.body}`;
+  //   const emojiSpan = document.createElement('span');
+  //   emojiSpan.className = diaryEntry.emojiClass;
+  //   listItem.appendChild(emojiSpan);
+  //   diaryEntries.prepend(listItem);
+  // }
+
   function showSavedMessage() {
     const message = document.createElement('div');
     message.textContent = 'Päiväkirja tallennettu';
@@ -23,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
   diaryForm.addEventListener('submit', async (event) => {
     event.preventDefault();
 
-    const date = document.querySelector('#diary_date').value;
+    const date = new Date (document.querySelector('#diary_date').value);
     const content = document.querySelector('textarea').value;
     const activeEmoji = document.querySelector('.emoji-active');
     const emojiClass = activeEmoji ? activeEmoji.className : '';
@@ -42,9 +87,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     try {
       const response = await fetch('/diaryEntries', requestOptions);
+      const newDiaryEntry = await response.json();
 
       if (response.ok) {
         showSavedMessage();
+        addNewDiaryEntryToDOM(newDiaryEntry);
 
         document.querySelector('#diary_date').value = '';
         document.querySelector('textarea').value = '';
@@ -56,12 +103,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  async function fetchDiaryEntries(skip = 0) {
+    try {
+      const response = await fetch(`/diaryEntries?skip=${skip}`);
+      const diaryEntriesData = await response.json();
+  
+      diaryEntriesData.forEach((entry) => {
+        addNewDiaryEntryToDOM(entry);
+      });
+    } catch (error) {
+      console.error('Error fetching diary entries:', error);
+    }
+  }
+  
+
   const activitiesButton = document.querySelector('#activities');
   const activitiesList = document.querySelector('.activities');
 
   activitiesButton.addEventListener('click', () => {
     activitiesList.toggleAttribute('hidden');
   });
+
 });
 
 async function showDiaryEntry(diaryEntryId) {

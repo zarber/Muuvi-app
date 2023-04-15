@@ -30,13 +30,26 @@ router.post('/', async (req, res) => {
 router.get('/', ensureAuth, async (req, res) => {
   const skip = parseInt(req.query.skip) || 0;
   try {
-    const diaryEntries = await DiaryEntry.find({ user: req.user._id }).sort({ diary_date: -1 }).skip(skip).limit(10).lean();
+    const decoded = jwt.verify(req.cookies.cookieToken, process.env.SECRET);
+    const diaryEntries = await DiaryEntry.find({ user: decoded._id }).sort({ diary_date: -1 }).skip(skip).limit(10).lean();
     res.json(diaryEntries);
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'Failed to fetch diary entries', error: err });
   }
 });
+
+
+// router.get('/', ensureAuth, async (req, res) => {
+//   const skip = parseInt(req.query.skip) || 0;
+//   try {
+//     const diaryEntries = await DiaryEntry.find({ user: req.user._id }).sort({ diary_date: -1 }).skip(skip).limit(10).lean();
+//     res.json(diaryEntries);
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).json({ message: 'Failed to fetch diary entries', error: err });
+//   }
+// });
 
 router.get('/:id', ensureAuth, async (req, res) => {
   try {
