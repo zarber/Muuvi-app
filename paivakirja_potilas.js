@@ -28,7 +28,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const activeEmoji = document.querySelector('.emoji-active');
     const emojiClass = activeEmoji ? activeEmoji.className : '';
 
-    console.log('Emoji class:', emojiClass);
+    if (!date || content.length < 1 || !emojiClass) {
+      event.preventDefault();
+      alert('Valitse fiilis-hymiö ja/tai kirjoita vähintään 1 merkki ennen tallentamista');
+      return;
+    }
 
     const requestOptions = {
       method: 'POST',
@@ -59,3 +63,26 @@ document.addEventListener('DOMContentLoaded', () => {
     activitiesList.toggleAttribute('hidden');
   });
 });
+
+async function showDiaryEntry(diaryEntryId) {
+  if (!diaryEntryId) {
+    document.querySelector('#selected_diary_entry').innerHTML = '';
+    return;
+  }
+
+  try {
+    const response = await fetch(`/diaryEntries/${diaryEntryId}`);
+    const diaryEntry = await response.json();
+
+    const diaryEntryHtml = `
+      <h2>${new Date(diaryEntry.diary_date).toLocaleDateString('fi-FI')}</h2>
+      <p>${diaryEntry.body}</p>
+      <span class="${diaryEntry.emojiClass}"></span>
+    `;
+
+    document.querySelector('#selected_diary_entry').innerHTML = diaryEntryHtml;
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+

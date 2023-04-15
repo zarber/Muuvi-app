@@ -38,8 +38,8 @@ body {
   
 
 .diary {
-    grid-area: right; 
-    display: flex;
+    grid-area: main; 
+    display: grid;
     justify-content: center;
     align-items: center;
     flex-direction: column; 
@@ -92,6 +92,12 @@ body button {
     background-color: #FFEDD8;
     text-align:center;
     transition: all 0.15s;
+}
+
+#load-more {
+    border: none;
+  color: white;
+  padding: 15px 32px;
 }
 
 #log_out {
