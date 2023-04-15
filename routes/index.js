@@ -19,8 +19,8 @@ router.get('/etusivu_opiskelija', ensureAuth, async (req, res) => {
     const decoded = jwt.verify(req.cookies.cookieToken, process.env.SECRET);
     const stories = await Story.find({ user: decoded._id }).lean();
     // const stories = await Story.find({}).lean();
-    res.render('etusivu_opiskelija', {
-      layout: 'etusivu_opiskelija',
+    res.render('frontpage_student', {
+      layout: 'student/frontpage_student',
       // username: decoded.username,
       stories,
     });
@@ -47,41 +47,41 @@ router.get('/dashboard', ensureAuth, async (req, res) => {
   }
 });
 
-router.get('/excercise_plan', (req, res) => {
+router.get('/liikuntasuunnitelma_potilas', (req, res) => {
+  res.render('student_excercise_plan', {
+    layout: 'student/student_excercise_plan',
+  });
+});
+
+router.get('/aktiviteetit_ja_paivakirja', (req, res) => {
+  res.render('activities_and_diary', {
+    layout: 'student/activities_and_diary',
+  });
+});
+
+router.get('/hrv_mittaukset', (req, res) => {
+  res.render('hrv_measurements', {
+    layout: 'student/hrv_measurements',
+  });
+});
+
+
+router.get('/liikuntasuunnitelma', (req, res) => {
   res.render('excercise_plan', {
-    layout: 'excercise_plan',
+    layout: 'nurse/excercise_plan',
   });
 });
 
 router.get('/etusivu_ammattilainen', (req, res) => {
-  res.render('etusivu_ammattilainen', {
-    layout: 'etusivu_ammattilainen',
+  res.render('frontpage_nurse', {
+    layout: 'nurse/frontpage_nurse',
   });
 });
 
-router.get('/hrv_measurements', (req, res) => {
-  res.render('hrv_measurements', {
-    layout: 'hrv_measurements',
+router.get('/potilaslista', (req, res) => {
+  res.render('patientlist', {
+    layout: 'nurse/patientlist',
   });
-});
-
-router.get('/activities_and_diary', ensureAuth, async (req, res) => {
-  try {
-    const decoded = jwt.verify(req.cookies.cookieToken, process.env.SECRET);
-    const diaryEntries = await DiaryEntry.find({ user: decoded._id }).lean();
-
-    diaryEntries.forEach(entry => {
-      entry.diary_date_formatted = new Date(entry.diary_date).toLocaleDateString('fi-FI');
-    });
-
-    res.render('activities_and_diary', {
-      layout: 'activities_and_diary',
-      diaryEntries,
-    });
-  } catch (err) {
-    console.error(err);
-    res.render('error/500');
-  }
 });
 
 module.exports = router;

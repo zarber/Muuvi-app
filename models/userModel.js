@@ -14,16 +14,21 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  role: {
+    type: String,
+    enum: ['patient', 'nurse'],
+    default: 'patient',
+  },
 });
 
 // static signup method
-userSchema.statics.signup = async function (email, password) {
+userSchema.statics.signup = async function (email, password, role) {
   // validation
-  if (!email || !password) {
-    throw Error('Täytä kaikki kentät!');
+  if (!email || !password, role) {
+    throw Error('Kaikki kentät täytyy täyttää');
   }
   if (!validator.isEmail(email)) {
-    throw Error('Virheellinen sähköposti');
+    throw Error('Sähköposti ei ole oikeassa muodossa');
   }
   if (!validator.isStrongPassword(password)) {
     throw Error('Salasana ei ole tarpeeksi vahva');
@@ -38,7 +43,7 @@ userSchema.statics.signup = async function (email, password) {
   const salt = await bcrypt.genSalt(10);
   const hash = await bcrypt.hash(password, salt);
 
-  const user = await this.create({ email, password: hash });
+  const user = await this.create({ email, password: hash, role });
 
   return user;
 };
@@ -56,7 +61,7 @@ userSchema.statics.login = async function (email, password) {
 
   const match = await bcrypt.compare(password, user.password);
   if (!match) {
-    throw Error('Väärä password');
+    throw Error('Väärä salasana');
   }
 
   return user;

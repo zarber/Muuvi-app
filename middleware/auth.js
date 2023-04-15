@@ -30,6 +30,19 @@ module.exports = {
       }
     );
   },
+  authorize: function (...roles) {
+    return (req, res, next) => {
+      if (!roles.includes(req.user.role)) {
+        return next(
+          new ErrorResponse(
+            `Käyttäjäroolia ${req.user.role} ei ole oikeutta käyttää tätä toimintoa`,
+            403
+          )
+        );
+      }
+      next();
+    };
+  },
 };
 
 
