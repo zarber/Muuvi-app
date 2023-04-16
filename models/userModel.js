@@ -5,6 +5,14 @@ const validator = require('validator');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
+  firstname: {
+    type: String,
+    required: true,
+  },
+  lastname: {
+    type: String,
+    required: true,
+  },
   email: {
     type: String,
     required: true,
@@ -22,9 +30,9 @@ const userSchema = new Schema({
 });
 
 // static signup method
-userSchema.statics.signup = async function (email, password, role) {
+userSchema.statics.signup = async function (firstname, lastname, email, password, role) {
   // validation
-  if (!email || !password, role) {
+  if ( !firstname || !lastname || !email || !password || !role) {
     throw Error('Kaikki kentät täytyy täyttää');
   }
   if (!validator.isEmail(email)) {
@@ -39,12 +47,9 @@ userSchema.statics.signup = async function (email, password, role) {
   if (exists) {
     throw Error('Sähköposti on jo käytössä');
   }
-
   const salt = await bcrypt.genSalt(10);
   const hash = await bcrypt.hash(password, salt);
-
-  const user = await this.create({ email, password: hash, role });
-
+  const user = await this.create({ firstname, lastname, email, password: hash, role });
   return user;
 };
 
@@ -63,7 +68,6 @@ userSchema.statics.login = async function (email, password) {
   if (!match) {
     throw Error('Väärä salasana');
   }
-
   return user;
 };
 

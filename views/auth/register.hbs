@@ -3,6 +3,14 @@
     <form action="/auth/register" method="POST">
       <h1>Rekisteröityminen</h1>
         <div class="field">
+          <input type="firstname" name="firstname"/>
+          <label> Etunimi </label>
+        </div>
+        <div class="field">
+          <input type="lastname" name="lastname"/>
+          <label> Sukunimi </label>
+        </div>
+        <div class="field">
           <input type="email" name="email" />
           <label> Sähköposti</label>
         </div>
@@ -11,7 +19,7 @@
           <label> Salasana</label>
         </div>
         <label for='role'>Valitse rooli:
-          <select name='roles' id='roles'>
+          <select name='role' id='role'>
           <option value='patient' selected>Potilas</option>
           <option value='nurse'>Hoitaja</option>
           </select>

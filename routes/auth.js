@@ -6,8 +6,19 @@ const router = express.Router();
 const { ensureGuest } = require('../middleware/auth');
 const User = require('../models/userModel');
 
-const createToken = (_id) => {
-  return jwt.sign({ _id }, process.env.SECRET, { expiresIn: '3d' });
+const createToken = (res, req, user) => {
+  const token = jwt.sign(
+    { username: user.username, role: user.role, _id: user._id },
+    process.env.SECRET,
+    {
+      expiresIn: '3d',
+    }
+  );
+  res.cookie('cookieToken', token, { httpOnly: true });
+  req.user = user;
+  user.role === 'patient'
+    ? res.redirect('/etusivu_opiskelija')
+    : res.redirect('/potilaslista');
 };
 
 // @desc    Login page
@@ -20,19 +31,14 @@ router.get('/login', ensureGuest, (req, res) => {
 
 // @desc    Login page
 // @route   POST /auth/login
-router.post('/login', async (req, res) => {
+router.post('/login', async (req, res, next) => {
   const { email, password } = req.body;
 
   try {
     const user = await User.login(email, password);
-    // create a token
-    const token = createToken(user._id);
-    res.cookie('cookieToken', token, { httpOnly: true });
-    res.redirect('/etusivu_opiskelija');
+    createToken(res, req, user);
   } catch (error) {
-    res.send(
-      `<p>${error.message}</p><p>Error. <a href="/">Go back home.</a></p>`
-    );
+    res.send(`<p>${error.message}</p><p>Error. <a href="/">Go back home.</a></p>`);
   }
 });
 
@@ -54,19 +60,14 @@ router.get('/register', ensureGuest, (req, res) => {
 // @desc    Register page
 // @route   POST /auth/register
 router.post('/register', async (req, res, next) => {
-  const { username, email, password } = req.body;
+  const { firstname, lastname, email, password, role } = req.body;
 
   try {
-    const user = await User.signup(email, password);
-
-    // create a token
-    const token = createToken(user._id);
-    res.cookie('cookieToken', token, { httpOnly: true });
-    res.redirect('/etusivu_opiskelija');
+    const user = await User.signup(firstname, lastname, email, password, role);
+    createToken(res, req, user);
   } catch (error) {
-    res.send(
-      `<p>${error.message}</p><p>Error. <a href="/">Go back home.</a></p>`
-    );
+    console.log(error);
+    res.send(`<p>Error: ${error} <a href="/">Go back home.</a></p>`);
   }
 });
 
