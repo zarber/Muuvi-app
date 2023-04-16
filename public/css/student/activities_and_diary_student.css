@@ -8,6 +8,7 @@ body {
 .grid-container {
     min-height: 100vh;
     display: grid;
+    grid-template-rows: auto 1fr auto;
     grid-template-areas:
       'header header header header header header'
       ''main main main right right right''
@@ -25,7 +26,6 @@ body {
 }
 
 .activities {
-    grid-area: main;
     list-style: none;
     border: 50px;
     padding: 20px;
@@ -36,29 +36,26 @@ body {
     list-style: none;
 }
   
+.diary_container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
 .diary {
-    grid-area: main; 
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column; 
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
-    box-sizing: border-box;  
+    box-sizing: border-box;
 }
 
 .diary_history {
-    width: 100%;
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
     box-sizing: border-box; 
-}
-
-.footer {
-    grid-area: footer;
 }
 
 textarea::placeholder {
@@ -77,12 +74,11 @@ textarea::placeholder {
 
 body button {
     display:inline-block;
-    padding-left: 1em;
-    padding-right: 1em;
+    padding: 12px 20px;
     margin-top: 1.2em;
     margin-left: 0.5em;
     margin-right: 0.5em;
-    height: 50%;
+    height: 40px;
     border: 0;
     border-radius: 18px;
     text-decoration:none;
@@ -97,7 +93,7 @@ body button {
 #load-more {
     border: none;
   color: white;
-  padding: 15px 32px;
+  padding: 12px 20px;
 }
 
 #log_out {
@@ -181,8 +177,8 @@ form textarea {
 }
 
 .footer {
-    background-color:#2EC4B6;
-    margin-top: 5%;
+    grid-area: footer;
+    background-color: #2EC4B6;
     width: 100%;
     height: 6em;
 }

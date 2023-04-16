@@ -68,7 +68,8 @@ loadMoreButton.addEventListener('click', async () => {
   diaryForm.addEventListener('submit', async (event) => {
     event.preventDefault();
 
-    const date = new Date (document.querySelector('#diary_date').value);
+    const date = new Date(document.querySelector('#diary_date').value);
+
     const content = document.querySelector('textarea').value;
     const activeEmoji = document.querySelector('.emoji-active');
     const emojiClass = activeEmoji ? activeEmoji.className : '';
