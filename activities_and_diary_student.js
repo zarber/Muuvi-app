@@ -91,7 +91,7 @@ loadMoreButton.addEventListener('click', async () => {
 
     try {
       const response = await fetch('/diaryEntries', requestOptions);
-      const newDiaryEntry = await response.json();
+      const { diaryEntry: newDiaryEntry } = await response.json();
 
       if (response.ok) {
         showSavedMessage();
