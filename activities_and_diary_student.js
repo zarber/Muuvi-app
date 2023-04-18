@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 loadMoreButton.addEventListener('click', async () => {
   const skip = document.querySelectorAll('#diary_entries li').length;
   await fetchDiaryEntries(skip);
+  
 });
 
   fetchDiaryEntries();
@@ -67,6 +68,8 @@ loadMoreButton.addEventListener('click', async () => {
 
   diaryForm.addEventListener('submit', async (event) => {
     event.preventDefault();
+
+    console.log("Validationg running");
 
     const date = new Date(document.querySelector('#diary_date').value);
 
@@ -148,4 +151,3 @@ async function showDiaryEntry(diaryEntryId) {
     console.error('Error:', error);
   }
 }
-

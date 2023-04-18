@@ -12,6 +12,8 @@ const methodOverride = require('method-override');
 const workoutRoutes = require('./routes/api/workouts');
 const userRoutes = require('./routes/user');
 const diaryEntriesRoutes = require('./routes/diaryEntries');
+const { log } = require('console');
+const spawn = require('child_process').spawn;
 
 mongoose.set('strictQuery', true);
 // express app
@@ -88,4 +90,16 @@ mongoose
     console.log(err);
 });
 app.use(express.urlencoded({ extended: true }));
+
+app.get('/python', cb);
+function cb(req, res) {
+  console.log("Line 96");
+  const process = spawn('python', ['./scripts/test.py']);
+  console.log("line 98");
+  process.stdout.on('data', function (data) {
+    console.log("line 100");
+    res.send(data.toString());
+    // res.send(data.toJSON());
+  });
+}
 

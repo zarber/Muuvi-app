@@ -7,7 +7,7 @@ const DiaryEntry = require('../models/diaryModel');
 
 router.post('/', async (req, res) => {
   try {
-    console.log('POST request to /diaryEntries');
+ //   console.log('POST request to /diaryEntries');
     console.log('Request body:', req.body);
 
     const decoded = jwt.verify(req.cookies.cookieToken, process.env.SECRET);

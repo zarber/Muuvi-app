@@ -57,10 +57,13 @@ diaryForm.addEventListener('submit', (event) => {
   const activeEmoji = document.querySelector('.emoji-active');
   
   if (activeEmoji) {
-    const emojiClone = activeEmoji.cloneNode(true);
-    li.appendChild(emojiClone);
+    const emojiClass = activeEmoji.className;
+    const emojiClassElement = document.getElementById("emojiClass");
+    // document.getElementById("emojiClass").value = emojiClass;
+    emojiClassElement.value = emojiClass;
   }
 });
+
 
 // Emoji click handling
 const emojis = document.querySelectorAll('.emoji');
