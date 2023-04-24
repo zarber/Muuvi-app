@@ -8,7 +8,7 @@ body {
     display: grid;
     grid-template-areas:
       'header header header header header header'
-      'main main main right right right'
+      'main main main main main main'
       'footer footer footer footer footer footer';
     row-gap: 1em;
     background-color: white
@@ -16,6 +16,12 @@ body {
 
 .items{
     width: 100%;
+    grid-area: main;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+    height: 50em;
 }
 
 .lista{
@@ -128,15 +134,7 @@ body button:active{
     .grid-container {
         grid-template-areas: 
         "header" "header"
-        "right" "right"
         "main" "main"
         "footer" "footer";
-    }
-
-    .oikea {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column; 
     }
 }

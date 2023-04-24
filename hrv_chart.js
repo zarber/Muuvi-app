@@ -1,3 +1,4 @@
+
 //nurse's hrv chart
 am5.ready(function() {
 
@@ -75,7 +76,7 @@ var series = chart.series.push(am5xy.LineSeries.new(root, {
   
 // Add scrollbar
 chart.set("scrollbarX", am5.Scrollbar.new(root, {
-  orientation: "horizontal"
+orientation: "horizontal"
 }));
   
 // Set data
@@ -161,6 +162,8 @@ series.columns.template.adapters.add("fill", function(fill, target) {
 series.columns.template.adapters.add("stroke", function(stroke, target) {
   return chart.get("colors").getIndex(series.columns.indexOf(target));
 });
+
+
 
 // Set data
 var data = [{

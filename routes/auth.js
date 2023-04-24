@@ -38,7 +38,9 @@ router.post('/login', async (req, res, next) => {
     const user = await User.login(email, password);
     createToken(res, req, user);
   } catch (error) {
-    res.send(`<p>${error.message}</p><p>Error. <a href="/">Go back home.</a></p>`);
+    res.send(`<p>${error.message}</p><p>Virhe. <a href="/">Palaa takaisin.</a></p>`);
+    res.render('error/login_register_error', {
+    layout:'login_register_error'});   
   }
 });
 
@@ -67,7 +69,7 @@ router.post('/register', async (req, res, next) => {
     createToken(res, req, user);
   } catch (error) {
     console.log(error);
-    res.send(`<p>Error: ${error} <a href="/">Go back home.</a></p>`);
+    res.send(`<p>Virhe: ${error} <a href="/auth/register">Palaa takaisin.</a></p>`);
   }
 });
 

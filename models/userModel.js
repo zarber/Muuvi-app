@@ -33,19 +33,19 @@ const userSchema = new Schema({
 userSchema.statics.signup = async function (firstname, lastname, email, password, role) {
   // validation
   if ( !firstname || !lastname || !email || !password || !role) {
-    throw Error('Kaikki kentät täytyy täyttää');
+    throw Error('Kaikki kentät täytyy täyttää.');
   }
   if (!validator.isEmail(email)) {
-    throw Error('Sähköposti ei ole oikeassa muodossa');
+    throw Error('Sähköposti ei ole oikeassa muodossa.');
   }
   if (!validator.isStrongPassword(password)) {
-    throw Error('Salasana ei ole tarpeeksi vahva');
+    throw Error('Salasana ei ole tarpeeksi vahva. Muistithan käyttää vähintään 8 merkkiä, isoja ja pieniä kirjaimia, yhtä numeroa ja yhtä erikoismerkkiä?');
   }
 
   const exists = await this.findOne({ email });
 
   if (exists) {
-    throw Error('Sähköposti on jo käytössä');
+    throw Error('Sähköposti on jo käytössä.');
   }
   const salt = await bcrypt.genSalt(10);
   const hash = await bcrypt.hash(password, salt);
@@ -61,12 +61,12 @@ userSchema.statics.login = async function (email, password) {
 
   const user = await this.findOne({ email });
   if (!user) {
-    throw Error('Väärä sähköposti');
+    throw Error('Väärä sähköposti.');
   }
 
   const match = await bcrypt.compare(password, user.password);
   if (!match) {
-    throw Error('Väärä salasana');
+    throw Error('Väärä salasana.');
   }
   return user;
 };

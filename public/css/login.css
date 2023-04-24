@@ -148,11 +148,11 @@ form .signup-link a:hover{
   padding: 0.5em 1em 0em 1em;
   height: 2.5em;
   margin-top: 1em;
-  margin-left: 0.5em;
+  margin-left: 6em;
   border-radius: 20px;
   text-decoration:none;
-  justify-content: center;
   font-size: 18px;
+  font-weight: 500;
   background-color: #2EC4B6;
   color: #fff;
 }

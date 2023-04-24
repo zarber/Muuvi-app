@@ -10,7 +10,6 @@ h3 {
 }
 
 .grid-container {
-    min-height: 100vh;
     display: grid;
     grid-template-areas:
       'header header header header header header'
@@ -198,6 +197,7 @@ h3 {
     justify-content: center;
     align-items: center;
     flex-direction: column; 
+    height: 60em;
 }
 
 .right {
@@ -215,7 +215,7 @@ h3 {
 
 #student_hrv_chart {
     width: 85%;
-    height: 80%;
+    height: 100%;
 }
 
 #hrv_measurement_button { 
@@ -325,7 +325,7 @@ form textarea {
     height: 5em;
 }
 
-@media only screen and (max-width: 1150px) {
+@media only screen and (max-width: 1400px) {
     .grid-container {
         grid-template-areas: 
         "header" "header"
@@ -351,7 +351,7 @@ form textarea {
     }
 }
 
-@media screen and (max-width: 1150px) {
+@media screen and (max-width: 1400px) {
     .navigationresponsive #aphorism {
         display: none;
     }
