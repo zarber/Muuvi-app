@@ -160,3 +160,18 @@ form .signup-link a:hover{
 #registeration:hover {
   text-decoration: underline;
 }
+
+#password {
+  margin-bottom: 4.5em;
+}
+
+p {
+  color: #2EC4B6;
+  font-style: oblique;
+}
+
+#role {
+  width: 12em;
+  height: 2em;
+  margin-bottom: 1em;
+}
