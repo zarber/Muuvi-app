@@ -1,3 +1,4 @@
+//Adding help-modal to the nurse's frontpage
 const helpmodal = document.getElementById("helpModalNurse");
 const helpbtn = document.getElementById("help-icon");
 const helpspan = document.getElementsByClassName("closeHelpNurse")[0];
