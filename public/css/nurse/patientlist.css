@@ -2,14 +2,24 @@ body {
     margin: 0;
     font-family: 'Quicksand', sans-serif;
 }
-.items{
-    width: 100%;
+.grid-container {
+    display: grid;
+    grid-template-areas:
+      'header header header header header header'
+      'main main main main main main'
+      'footer footer footer footer footer footer';
+    row-gap: 1em;
+    background-color: white
 }
 
-.lista{
-    width: 400px;
-    text-align: center;
-    margin: 0 auto;
+.items{
+    width: 100%;
+    grid-area: main;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+    height: 50em;
 }
 
 li{
@@ -35,39 +45,20 @@ li{
     background-color: #FFEDD8;
     text-align:center;
     transition: all 0.15s;
-  }
+}
 
-  #lisää{
+#lisää{
     float: right;
-  }
-
-  #valitse{
-    float: left;
-  }
-
-.grid-container {
-    width: 100%;
-    height: 100%;
-    display: grid;
-    grid-template-areas:
-      'header header header header header header'
-      'main main main right right right'
-      'footer footer footer footer footer footer';
-    row-gap: 1em;
-    background-color: white
 }
 
-
-.footer {
-    grid-area: footer;
+#valitse{
+        float: left;
 }
-
 
 #logo {
     width: 150px;
     height: 55px;
 }
-
 
 body button {
     display:inline-block;
@@ -109,15 +100,7 @@ body button:active{
     .grid-container {
         grid-template-areas: 
         "header" "header"
-        "right" "right"
         "main" "main"
         "footer" "footer";
-    }
-
-    .oikea {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column; 
     }
 }

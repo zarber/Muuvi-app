@@ -31,14 +31,30 @@ router.get('/login', ensureGuest, (req, res) => {
 
 // @desc    Login page
 // @route   POST /auth/login
+// router.post('/login', async (req, res, next) => {
+//   const { email, password } = req.body;
+
+//   try {
+//     const user = await User.login(email, password);
+//     createToken(res, req, user);
+//   } catch (error) {
+//     console.log(error);
+//     res.send(`<p>${error.message}</p><p>Virhe. <a href="/">Palaa takaisin.</a></p>`);   
+//     res.send(`<img src="/images/${king_julien.png}" alt="King Julien" width="300" height="300">`); 
+//   }
+// });
+
 router.post('/login', async (req, res, next) => {
   const { email, password } = req.body;
 
   try {
     const user = await User.login(email, password);
     createToken(res, req, user);
-  } catch (error) {
-    res.send(`<p>${error.message}</p><p>Error. <a href="/">Go back home.</a></p>`);
+  } catch (err) {
+    console.error(err);
+    res.render('error/login_register_error', {
+      layout: 'login_register_error',
+    });
   }
 });
 
@@ -67,7 +83,7 @@ router.post('/register', async (req, res, next) => {
     createToken(res, req, user);
   } catch (error) {
     console.log(error);
-    res.send(`<p>Error: ${error} <a href="/">Go back home.</a></p>`);
+    res.send(`<p>Virhe: ${error} <a href="/auth/register">Palaa takaisin.</a></p>`);
   }
 });
 

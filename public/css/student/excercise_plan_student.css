@@ -1,0 +1,29 @@
+h1 {
+    text-align: center;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-areas:
+      'header header header header header header'
+      'main main main main main main'
+      'footer footer footer footer footer footer';
+    row-gap: 1em;
+    background-color: white
+}
+
+.main {
+    grid-area: main;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+    height: 60em;
+}
+
+footer {
+    background-color: #2EC4B6;
+    margin-top: 5%;
+    width: 100%;
+    height: 6em;
+}
