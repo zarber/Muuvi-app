@@ -1,4 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const currentDate = new Date();
+  const formattedDate = currentDate.toISOString().slice(0, 10);
+  document.querySelector('#diary_date').value = formattedDate;
+
+
   const diaryForm = document.querySelector('form');
   const diaryEntries = document.querySelector('#diary_entries');
 

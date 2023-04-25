@@ -49,40 +49,7 @@ document.getElementById("aphorism").innerText = aphorisms[randomAphorism];
 
 
 document.addEventListener('DOMContentLoaded', () => {
-const diaryForm = document.querySelector('form');
-
-diaryForm.addEventListener('submit', (event) => {
-  event.preventDefault();
-  
-  const activeEmoji = document.querySelector('.emoji-active');
-  
-  if (activeEmoji) {
-    const emojiClass = activeEmoji.className;
-    const emojiClassElement = document.getElementById("emojiClass");
-    // document.getElementById("emojiClass").value = emojiClass;
-    emojiClassElement.value = emojiClass;
-  }
-});
-
-
-// Emoji click handling
-const emojis = document.querySelectorAll('.emoji');
-
-emojis.forEach(emoji => {
-  emoji.addEventListener('click', (event) => {
-    // Remove the 'emoji-active' class from all other emojis
-    emojis.forEach(otherEmoji => {
-      if (otherEmoji !== event.target) {
-        otherEmoji.classList.remove('emoji-active');
-      }
-    });
-
-    // Toggle the 'emoji-active' class for the clicked emoji
-    event.target.classList.toggle('emoji-active');
-  });
-});
+const currentDate = new Date();
+const formattedDate = currentDate.toISOString().slice(0, 10);
+document.querySelector('#diary_date').value = formattedDate;
 }); 
-
-
-
-

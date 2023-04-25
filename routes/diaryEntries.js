@@ -19,9 +19,8 @@ router.post('/', async (req, res) => {
     const newEntry = await DiaryEntry.create({ diary_date, body, emojiClass, user: req.body.user });
     
     console.log('New diary entry created:', newEntry);
-    
+
     res.json({ diaryEntry: newEntry });
-    res.redirect('/activities_and_diary');
   } catch (err) {
     console.error(err);
     res.render('error/500');
