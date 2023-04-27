@@ -2,6 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Etusivu</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/student/frontpage_student.css">
@@ -19,21 +20,21 @@
     {{{body}}}
     </div>
     <script>
-  async function fetchDailySteps() {
-    try {
-      const response = await fetch('/api/dailySteps');
-      if (response.ok) {
-        const { steps } = await response.json();
-        document.getElementById('daily_steps').textContent = `🤸🏼‍♀️${steps} askelta`;
-      } else {
-        console.error('Failed to fetch daily steps:', response.status, response.statusText);
+    async function fetchDailySteps() {
+      try {
+        const response = await fetch('/api/dailySteps');
+        if (response.ok) {
+          const { steps } = await response.json();
+          document.getElementById('daily_steps').textContent = `🤸🏼‍♀️${steps} askelta`;
+        } else {
+          console.error('Failed to fetch daily steps:', response.status, response.statusText);
+        }
+      } catch (error) {
+        console.error('Error fetching daily steps:', error);
       }
-    } catch (error) {
-      console.error('Error fetching daily steps:', error);
     }
-  }
 
-  fetchDailySteps();
+    fetchDailySteps();
 </script>
 
     <script src="/frontpage_student.js"></script>
