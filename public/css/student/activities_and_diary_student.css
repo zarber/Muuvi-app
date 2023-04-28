@@ -31,13 +31,9 @@ body {
     padding: 20px;
     box-sizing: border-box;
   }
-
-.ul {
-    list-style: none;
-}
   
 .diary_container {
-    display: grid;
+    display: flex;
     grid-template-columns: 1fr 1fr;
     column-gap: 20px;
     max-width: 1200px;
@@ -62,8 +58,8 @@ textarea::placeholder {
     color: #888;
 }
 
-#activities {
-    margin-right: 1em;
+.activities {
+    text-align: center;
 }
 
 
@@ -73,7 +69,7 @@ textarea::placeholder {
 }
 
 body button {
-    display:inline-block;
+    display: inline-block;
     padding: 12px 20px;
     margin-top: 1.2em;
     margin-left: 0.5em;
@@ -90,12 +86,36 @@ body button {
     transition: all 0.15s;
 }
 
-#load-more {
-    border: none;
-  color: white;
-  padding: 12px 20px;
+ ul {
+    position: relative;
+    width: 450px;
+    margin: 30px auto 0;
+    padding: 10px;
+    box-sizing: border-box;
+    list-style: none;
+ }
+
+ ul li {
+    display: flex;
+    background: #2EC4B6;
+    padding: 10px 20px;
+    border-radius: 18px;
+    color: #1A1A1A;
+    font-weight: 900;
+    margin: 5px 0;
+    transition: .5s;
+    justify-content: space-between;
+    align-items: center;
+ }
+
+ .diary_history .emoji {
+    color: #FFEDD8;
+    position: relative;
 }
 
+ ul li:hover {
+    background: #215c55;
+ }
 
 #log_out {
     margin-left: 8%;
@@ -111,6 +131,13 @@ body button:hover{
 body button:active{
     color:#FF8055;
     border-color:#FF8055;
+}
+
+.load-more-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 #emojis {

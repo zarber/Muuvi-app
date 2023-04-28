@@ -88,9 +88,9 @@ loadMoreButton.addEventListener('click', async () => {
     const minute = document.querySelector('#exercise_duration_minute').value;
     const time = hour + minute;
 
-    if ( time == 0) {
+    if ( time == 0 || content.length < 1) {
       event.preventDefault();
-      alert('Unohdit merkitä liikunnankeston');
+      alert('Unohdit merkitä liikunnankeston ja/tai kuvauksen');
       return;
     }
 
