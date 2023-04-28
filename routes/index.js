@@ -3,6 +3,7 @@ const router = express.Router();
 const jwt = require('jsonwebtoken');
 const { authorize, ensureAuth, ensureGuest } = require('../middleware/auth');
 const DiaryEntry = require('../models/diaryModel')
+const ExerciseEntry = require('../models/exerciseModel')
 
 const Story = require('../models/StoryModel');
 
