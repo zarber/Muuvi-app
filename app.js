@@ -38,7 +38,6 @@ app.use((req, res, next) => {
 app.use(
   methodOverride(function (req, res) {
     if (req.body && typeof req.body === 'object' && '_method' in req.body) {
-      // look in urlencoded POST bodies and delete it
       let method = req.body._method;
       delete req.body._method;
       return method;
@@ -91,13 +90,11 @@ mongoose
     console.log(err);
 });
 
-
 app.use(express.urlencoded({ extended: true }));
 
 // 'use strict';
 
 // require('dotenv').config();
-// const fetch = require('node-fetch');
 
 // const userAgent = 'Muuvi KubiosTest';
 
@@ -124,15 +121,15 @@ app.use(express.urlencoded({ extended: true }));
 // return token;
 // };
 
-// const perso = async () => {
-// const token = await login();
-// const myHeaders = {Authorization: 'Bearer ' + token, 'User-Agent': userAgent};
-// const response = await fetch('https://analysis.kubioscloud.com/v2/user/self', { headers: myHeaders });
-// const json = await response.json();
-// console.log('json', json);
-// };
+// // const perso = async () => {
+// // const token = await login();
+// // const myHeaders = {Authorization: 'Bearer ' + token, 'User-Agent': userAgent};
+// // const response = await fetch('https://analysis.kubioscloud.com/v2/user/self', { headers: myHeaders });
+// // const json = await response.json();
+// // console.log('json', json);
+// // };
 
-// perso();
+// // perso();
 
 
 // const data = async () => {

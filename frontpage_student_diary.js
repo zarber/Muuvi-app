@@ -18,22 +18,9 @@ diaryForm.addEventListener('submit', async (event) => {
   const date = new Date(document.querySelector('#diary_date').value);
   const content = document.querySelector('textarea').value;
 
-  const emojiMapping = {
-    'fa-face-laugh-beam': '5',
-    'fa-face-smile-beam': '4',
-    'fa-face-grimace': '3',
-    'fa-face-frown-open': '2',
-    'fa-face-frown': '1',
-  };
-  // MUISTA TEHDÄ SAMA ACTIVITES_AND_DIARY.JS
+  const emojiClass = activeEmoji ? activeEmoji.className : '';
 
-  const emojiClass = activeEmoji
-    ? Object.keys(emojiMapping).find((emojiKey) => activeEmoji.classList.contains(emojiKey))
-    : '';
-
-  const emojiValue = emojiClass ? emojiMapping[emojiClass] : '';
-
-  if (!date || content.length < 1 || !emojiValue) {
+  if (!date || content.length < 1 || !emojiClass) {
     event.preventDefault();
     alert('Valitse fiilis-hymiö ja/tai kirjoita vähintään 1 merkki ennen tallentamista');
     return;
@@ -42,7 +29,7 @@ diaryForm.addEventListener('submit', async (event) => {
   const requestOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ diary_date: date, body: content, emojiClass: emojiValue }),
+    body: JSON.stringify({ diary_date: date, body: content, emojiClass: emojiClass }),
   };
 
   try {
@@ -59,5 +46,28 @@ diaryForm.addEventListener('submit', async (event) => {
     }
   } catch (error) {
     console.error('Error:', error);
+  }
+  function showSavedMessage() {
+    const message = document.createElement('div');
+    message.classList.add('saved-message');
+    message.textContent = 'Päiväkirja tallennettu';
+    message.style.backgroundColor = 'green';
+    message.style.color = 'white';
+    message.style.padding = '12px';
+    message.style.borderRadius = '15px';
+    message.style.marginTop = '12px';
+    message.style.width = 'fit-content';
+  
+    const container = document.querySelector('.right');
+    container.appendChild(message);
+  
+    const activeEmoji = document.querySelector('.emoji-active');
+    if (activeEmoji) {
+      activeEmoji.classList.remove('emoji-active');
+    }
+
+    setTimeout(() => {
+      message.remove();
+    }, 5000);
   }
 });
