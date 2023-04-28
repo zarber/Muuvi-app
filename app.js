@@ -12,6 +12,7 @@ const methodOverride = require('method-override');
 const workoutRoutes = require('./routes/api/workouts');
 const userRoutes = require('./routes/user');
 const diaryEntriesRoutes = require('./routes/diaryEntries');
+const exerciseEntriesRoutes = require('./routes/exerciseEntries');
 const fetch = require('node-fetch');
 const { log } = require('console');
 const spawn = require('child_process').spawn;
@@ -73,6 +74,7 @@ app.use('/activities_and_diary', require('./routes/diaryEntries'));
 app.use('/api/workouts', workoutRoutes);
 app.use('/api/user', userRoutes);
 app.use('/diaryEntries', diaryEntriesRoutes);
+app.use('/exerciseEntries', exerciseEntriesRoutes);
 
 //route for javascript -files
 app.use('/', express.static(__dirname + '/'));
