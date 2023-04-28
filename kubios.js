@@ -6,6 +6,7 @@ const userAgent = 'Muuvi KubiosTest';
 const login = async () => {
 const cookie = 'muuviRandomRnadomRandomRan';
 const myHeaders = {Cookie: `XSRF-TOKEN=${cookie}`, 'User-Agent': userAgent};
+const fetch = require('node-fetch');
 const myBody = new URLSearchParams();
 myBody.set('client_id', process.env.CLIENT_ID);
 myBody.set('redirect_uri', 'https://analysis.kubioscloud.com/v1/portal/login');
@@ -39,17 +40,48 @@ return token;
 
 const data = async () => {
 const fs = require('fs');  
-const fetch = require('node-fetch');
 const token = await login();
 const myHeaders = { Authorization: 'Bearer '+ token, 'User-Agent': userAgent };
 const response = await fetch('https://analysis.kubioscloud.com/v2/result/self?types=readiness&daily=yes&from=2023-01-22T00%3A00%3A00%2B00%3A00&to=2023-02-04T23%3A59%3A59%2B00%3A00', { headers: myHeaders });
 const json = await response.json();
 console.log('json', json);
-fs.writeFile("data.json", JSON.stringify(json), function(err) {
-  if (err) {
-      console.log(err);
-  }
-});
+const jsonresults = json['results'];
+console.log(jsonresults);
+
+
+const { MongoClient } = require('mongodb');
+
+//Connection Mongodb URI from env-file
+const uri = process.env.MONGO_URI;
+
+//Creating a new MongoClient
+const client = new MongoClient(uri);
+
+//Connecting to the Mongodb server
+client.connect().then(async () => {
+  try {
+    // Selecting the database and collection
+    const db = client.db('Muuvi');
+    const collection = db.collection('hrv_results');
+    //Get selected data from jsonresults
+    for(let i = 0; i < jsonresults.length; i++) {
+      const date = jsonresults[i].daily_result;
+      const readiness = jsonresults[i].result.readiness;
+      const stress = jsonresults[i].result.stress_index;
+      const result = await collection.insertOne({date, readiness, stress});
+      console.log(`Lisätty ${result.insertedId}`);
+    }
+    // Insert the document into the collection
+    // const result = await collection.insertMany(jsonresults);
+    // console.log(`Lisätty ${result.insertedCount} tiedostoa`);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      // Close the client
+      client.close();
+    }
+  }).catch(error => console.error(error));
 };
 
-data(); 
+data();
+ 

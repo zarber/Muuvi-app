@@ -11,6 +11,7 @@ router.post('/login', loginUser)
 // signup route
 router.post('/signup', signupUser)
 
+//get signed up users
 router.get('/users', getUsers)
 
 module.exports = router

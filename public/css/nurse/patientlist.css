@@ -12,6 +12,10 @@ body {
     background-color: white
 }
 
+#header {
+    font-size: 50px;
+}
+
 .items{
     width: 100%;
     grid-area: main;
@@ -23,70 +27,17 @@ body {
 }
 
 li{
-    background-color: rgb(205, 205, 205);
+    width: 15em;
+    background-color: #2EC4B6;
     outline:solid 1px black;
     padding: 12px;
-}
-
-#buttons{
-    display:inline-block;
-    padding-left: 1em;
-    padding-right: 1em;
-    margin-top: 1.2em;
-    margin-left: 0.5em;
-    margin-right: 0.5em;
-    height: 50%;
-    border: 0;
-    border-radius: 18px;
-    text-decoration:none;
-    font-family: 'Quicksand', sans-serif;
-    font-size: 16px;
-    font-weight:700;
-    background-color: #FFEDD8;
-    text-align:center;
-    transition: all 0.15s;
-}
-
-#lisää{
-    float: right;
-}
-
-#valitse{
-        float: left;
+    font-size: 20px;
+    text-align: center;
 }
 
 #logo {
     width: 150px;
     height: 55px;
-}
-
-body button {
-    display:inline-block;
-    padding-left: 1em;
-    padding-right: 1em;
-    margin-top: 1.2em;
-    margin-left: 0.5em;
-    margin-right: 0.5em;
-    height: 50%;
-    border: 0;
-    border-radius: 18px;
-    text-decoration:none;
-    font-family: 'Quicksand', sans-serif;
-    font-size: 16px;
-    font-weight:700;
-    background-color: #FFEDD8;
-    text-align:center;
-    transition: all 0.15s;
-}
-
-body button:hover{
-    color:#2EC4B6;
-    border-color:#2EC4B6;
-}
-
-body button:active{
-    color:#FF8055;
-    border-color:#FF8055;
 }
 
 .footer {
