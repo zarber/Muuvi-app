@@ -36,7 +36,7 @@ loadMoreButton.addEventListener('click', async () => {
     listItem.dataset.id = exerciseEntry._id;
   
 
-    listItem.textContent = `${exerciseEntry.exercise_duration_hour}h ${exerciseEntry.exercise_duration_minute}min - ${exerciseEntry.exercise_type}  ${exerciseEntry.body}`;
+    listItem.textContent = `${exerciseEntry.exercise_duration_hour}h ${exerciseEntry.exercise_duration_minute}min - ${exerciseEntry.exercise_type} - ${exerciseEntry.body}`;
     
     document.addEventListener('DOMContentLoaded', () => {
       // Your existing code goes here
@@ -46,7 +46,7 @@ loadMoreButton.addEventListener('click', async () => {
     });
 
     const deleteButton = document.createElement('button');
-    deleteButton.innerText = 'Delete';
+    deleteButton.innerText = 'Poista';
     deleteButton.addEventListener('click', () => {
       deleteListItem(exerciseEntry._id);
       listItem.remove(); // Remove the list item from the UI
@@ -79,7 +79,7 @@ loadMoreButton.addEventListener('click', async () => {
   exerciseForm.addEventListener('submit', async (event) => {
     event.preventDefault();
 
-    console.log("Validationg running");
+    console.log("Validation running");
     showExerciseEntry();
 
     const exerciseType = document.querySelector('#exercise_type').value;
