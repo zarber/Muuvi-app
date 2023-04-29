@@ -1,5 +1,6 @@
 <div class="main">
-  <div class="diary">
+<div class="main">
+  <div class="exercise">
       <h1>Lisää uusi liikuntasuunnitelma</h1>
       <form action="/Entries" method="post">
         <label for="exercise_type">Liikuntamuoto:</label>
@@ -16,7 +17,7 @@
         <input type="number" Value="0" id="exercise_duration_minute" name="exercise_duration_minute" min="0" max="59" step="1" placeholder="Minuutit">
         <br>
         <label for="exercise_date">Kuvaus liikunnalle:</label>
-        <input type="text" name="exercise_date" id="exercise_date" maxlength="200"></input>
+        <input type="text" name="exercise_date" id="exercise_date" maxlength="30"></input>
         <br>
         <button id="exercise_save" type="submit">Tallenna</button>
       </form>

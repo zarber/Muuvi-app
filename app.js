@@ -13,6 +13,7 @@ const workoutRoutes = require('./routes/api/workouts');
 const userRoutes = require('./routes/user');
 const diaryEntriesRoutes = require('./routes/diaryEntries');
 const exerciseEntriesRoutes = require('./routes/exerciseEntries');
+const hrvResultsRoutes = require('./routes/hrvResults');
 const fetch = require('node-fetch');
 const { log } = require('console');
 const spawn = require('child_process').spawn;
@@ -74,6 +75,7 @@ app.use('/api/workouts', workoutRoutes);
 app.use('/api/user', userRoutes);
 app.use('/diaryEntries', diaryEntriesRoutes);
 app.use('/exerciseEntries', exerciseEntriesRoutes);
+app.use('/hrvResults', hrvResultsRoutes);
 
 //route for javascript -files
 app.use('/', express.static(__dirname + '/'));
