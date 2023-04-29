@@ -151,6 +151,27 @@ body button:active{
     color: #2EC4B6
 }
 
+.fa-face-laugh-beam {
+    color: #0a7c00;
+}
+
+.fa-face-smile-beam {
+    color: #24da0c
+}
+
+.fa-face-grimace {
+    color: #c1c41f;
+}
+
+.fa-face-frown-open {
+    color: #cc4214;
+}
+
+.fa-face-frown {
+    color: #9b2c07;
+}
+
+
 .fa-face-laugh-beam:hover {
     color: #FF8055;
 }

@@ -7,7 +7,6 @@ const DiaryEntry = require('../models/diaryModel');
 
 router.post('/', async (req, res) => {
   try {
- //   console.log('POST request to /diaryEntries');
     console.log('Request body:', req.body);
 
     const decoded = jwt.verify(req.cookies.cookieToken, process.env.SECRET);
@@ -38,18 +37,6 @@ router.get('/', ensureAuth, async (req, res) => {
     res.status(500).json({ message: 'Failed to fetch diary entries', error: err });
   }
 });
-
-
-// router.get('/', ensureAuth, async (req, res) => {
-//   const skip = parseInt(req.query.skip) || 0;
-//   try {
-//     const diaryEntries = await DiaryEntry.find({ user: req.user._id }).sort({ diary_date: -1 }).skip(skip).limit(10).lean();
-//     res.json(diaryEntries);
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).json({ message: 'Failed to fetch diary entries', error: err });
-//   }
-// });
 
 router.get('/:id', ensureAuth, async (req, res) => {
   try {

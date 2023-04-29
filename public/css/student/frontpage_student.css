@@ -287,6 +287,26 @@ body button:active{
     justify-self: end;
 }
 
+.fa-face-laugh-beam {
+    color: #0a7c00;
+}
+
+.fa-face-smile-beam {
+    color: #24da0c
+}
+
+.fa-face-grimace {
+    color: #c1c41f;
+}
+
+.fa-face-frown-open {
+    color: #cc4214;
+}
+
+.fa-face-frown {
+    color: #9b2c07;
+}
+
 .emoji-active {
     opacity: 1.0;
     color: #2EC4B6
