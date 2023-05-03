@@ -200,3 +200,8 @@ const fetchPatientId = async () => {
     }
   }
   
+  const logoLink = document.getElementById('mainpage');
+  const pathname = window.location.pathname;
+  const asPatient = pathname.split('/').pop();
+  console.log(asPatient);
+  logoLink.href = `/etusivu_ammattilainen/${asPatient}`;
