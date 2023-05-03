@@ -156,7 +156,7 @@ const fetchPatientId = async () => {
         headers: { 'Content-Type': 'application/json' },
       };
     
-      fetch(`/exerciseEntries_nurse/${exerciseEntryId}`, requestOptions)
+      fetch(`/exerciseEntries/${exerciseEntryId}`, requestOptions)
         .then((response) => {
           if (response.ok) {
             console.log(`Exercise entry with ID ${exerciseEntryId} deleted successfully`);
