@@ -81,7 +81,7 @@ router.get('/hrv_mittaukset', (req, res) => {
   });
 });
 
-router.get('/etusivu_ammattilainen', (req, res) => {
+router.get('/etusivu_ammattilainen/:id', (req, res) => {
   res.render('frontpage_nurse', {
     layout: 'nurse/frontpage_nurse',
   });
