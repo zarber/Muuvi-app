@@ -32,14 +32,6 @@ const helpmodal = document.getElementById("helpModalNurse");
 const helpbtn = document.getElementById("help-icon");
 const helpspan = document.getElementsByClassName("closeHelpNurse")[0];
 
-const exercisePlanLink = document.getElementById('exercise_plan_edit');
-const pathname = window.location.pathname;
-const asPatient = pathname.split('/').pop();
-console.log(asPatient);
-exercisePlanLink.href = `/liikuntasuunnitelma/${asPatient}`;
-const logoLink = document.getElementById('mainpage');
-logoLink.href = `/etusivu_ammattilainen/${asPatient}`;
-
 helpbtn.onclick = function() {
 helpmodal.style.display = "block";
 }
@@ -52,3 +44,6 @@ const pathname = window.location.pathname;
 const asPatient = pathname.split('/').pop();
 console.log(asPatient);
 exercisePlanLink.href = `/liikuntasuunnitelma/${asPatient}`;
+const logoLink = document.getElementById('mainpage');
+logoLink.href = `/etusivu_ammattilainen/${asPatient}`;
+
