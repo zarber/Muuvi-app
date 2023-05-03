@@ -4,25 +4,26 @@ const jwt = require('jsonwebtoken');
 const { ensureAuth } = require('../middleware/auth');
 
 const ExerciseEntry = require('../models/exerciseModel');
+/* const PatientIdFetcher = require('../patientIdFetcher'); */
 
 router.post('/', async (req, res) => {
   try {
- //   console.log('POST request to /diaryEntries');
-    console.log('Request body:', req.body);
+    const url = req.headers.referer;
+    asPatient = url.match(/\/(\w+)$/)[1];
 
+    const { exercise_date, exercise_type, body, exercise_duration_hour, exercise_duration_minute } = req.body;
 
-    const decoded = jwt.verify(req.cookies.cookieToken, process.env.SECRET);
-    req.body.user = decoded._id;
+    // Creating a new diary entry which includes date, text (body), and user info
+    const newEntryExercise = await ExerciseEntry.create({
+      exercise_date,
+      exercise_type,
+      body,
+      exercise_duration_hour,
+      exercise_duration_minute,
+      user: asPatient
+    });
 
-
-    // const { exercise_date, body, emojiClass } = req.body;
-    const { exercise_date,exercise_type,body,exercise_duration_hour,exercise_duration_minute} = req.body;
-
-    // Creating a new diary which includes date, text (body), emoji and user info
-    const newEntryExercise = await ExerciseEntry.create({ exercise_date,body,exercise_type, exercise_duration_hour,exercise_duration_minute, user: req.body.user });
-    
     console.log('New exercise entry created:', newEntryExercise);
-
     res.redirect('/student_exercise_plan');
   } catch (err) {
     console.error(err);
@@ -34,7 +35,17 @@ router.get('/', ensureAuth, async (req, res) => {
   const skip = parseInt(req.query.skip) || 0;
   try {
     const decoded = jwt.verify(req.cookies.cookieToken, process.env.SECRET);
-    const exerciseEntries = await ExerciseEntry.find({ user: decoded._id }).sort({ exercise_date: -1 }).skip(skip).limit(10).lean();
+    let exerciseEntries;
+
+    if (decoded.role === 'nurse') {
+      const url = req.headers.referer;
+      const userId = url.match(/\/(\w+)$/)[1];
+      exerciseEntries = await ExerciseEntry.find({ user: userId }).sort({ exercise_date: -1 }).skip(skip).limit(10).lean();
+    } else if (decoded.role === 'patient') {
+      const userId = decoded._id;
+      exerciseEntries = await ExerciseEntry.find({ user: userId }).sort({ exercise_date: -1 }).skip(skip).limit(10).lean();
+    }
+
     res.json(exerciseEntries);
   } catch (err) {
     console.error(err);
@@ -52,9 +63,6 @@ router.delete('/:id', ensureAuth, async (req, res) => {
 
     const decoded = jwt.verify(req.cookies.cookieToken, process.env.SECRET);
 
-    if (exerciseEntry.user.toString() !== decoded._id) {
-      return res.status(401).json({ message: 'Not authorized to delete this ExerciseEntry' });
-    }
 
     await ExerciseEntry.findByIdAndDelete(req.params.id);
 
