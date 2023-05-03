@@ -56,92 +56,62 @@ var legend = chart.children.push(
 );
 
 var data = [{
-    category: "15",
-    value: 100,
-    columnSettings: {
-    fill: am5.color(0xc6251a)
-    }
-}, {
-    category: "14",
-    value: 100,
-    columnSettings: {
-    fill: am5.color(0xc6251a)
-    }
-}, {
-    category: "13",
-    value: 100,
-    columnSettings: {
-    fill: am5.color(0xc6251a)
-    }
-}, {
-    category: "12",
-    value: 100,
-    columnSettings: {
-    fill: am5.color(0xc6251a)
-    }
-}, {
-    category: "11",
-    value: 100,
-    columnSettings: {
-    fill: am5.color(0xc6251a)
-    }
-}, {
     category: "10",
+    value: 100,
+    columnSettings: {
+    fill: am5.color(0xfcc034)
+    }
+}, {
+    category: "20",
+    value: 100,
+    columnSettings: {
+    fill: am5.color(0xfcc034)
+    }
+}, {
+    category: "30",
+    value: 100,
+    columnSettings: {
+    fill: am5.color(0xfcc034)
+    }
+}, {
+    category: "40",
+    value: 100,
+    columnSettings: {
+    fill: am5.color(0xfcc034)
+    }
+}, {
+    category: "50",
+    value: 100,
+    columnSettings: {
+    fill: am5.color(0xfcc034)
+    }
+}, {
+    category: "60",
     value: 100,
     currentBullet: true,
     columnSettings: {
-    fill: am5.color(0xfcc034)
+    fill: am5.color(0x6bc352)
     }
 }, {
-    category: "9",
-    value: 100,
-    columnSettings: {
-    fill: am5.color(0xfcc034)
-    }
-}, {
-    category: "8",
-    value: 100,
-    columnSettings: {
-    fill: am5.color(0xfcc034)
-    }
-}, {
-    category: "7",
-    value: 100,
-    columnSettings: {
-    fill: am5.color(0xfcc034)
-    }
-}, {
-    category: "6",
-    value: 100,
-    columnSettings: {
-    fill: am5.color(0xfcc034)
-    }
-}, {
-    category: "5",
+    category: "70",
     value: 100,
     columnSettings: {
     fill: am5.color(0x6bc352)
     }
 }, {
-    category: "4",
+    category: "80",
     value: 100,
     columnSettings: {
     fill: am5.color(0x6bc352)
     }
 }, {
-    category: "3",
+    category: "90",
     value: 100,
     columnSettings: {
     fill: am5.color(0x6bc352)
     }
 }, {
-    category: "2",
-    value: 100,
-    columnSettings: {
-    fill: am5.color(0x6bc352)
-    }
-}, {
-    category: "1",
+    category: "100",
     value: 100,
     columnSettings: {
     fill: am5.color(0x6bc352)
@@ -254,7 +224,7 @@ series.bullets.push(function(root, target, dataItem) {
     }));
     
     var label = container.children.push(am5.Label.new(root, {
-        text: "GOAL\n[bold]ZERO[/]",
+        text: "[bold]100%[/]",
         textAlign: "center",
         //fontSize: "10",
         fill: am5.color(0xffffff),
