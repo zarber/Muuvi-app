@@ -199,9 +199,9 @@ const fetchPatientId = async () => {
       console.error('Error:', error);
     }
   }
-  
-  const logoLink = document.getElementById('mainpage');
-  const pathname = window.location.pathname;
-  const asPatient = pathname.split('/').pop();
-  console.log(asPatient);
-  logoLink.href = `/etusivu_ammattilainen/${asPatient}`;
+
+const logoLink = document.getElementById('logo_button');
+const pathname = window.location.pathname;
+const asPatient = pathname.split('/').pop();
+logoLink.href = `/etusivu_ammattilainen/${asPatient}`;
+

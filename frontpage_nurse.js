@@ -44,6 +44,5 @@ const pathname = window.location.pathname;
 const asPatient = pathname.split('/').pop();
 console.log(asPatient);
 exercisePlanLink.href = `/liikuntasuunnitelma/${asPatient}`;
-const logoLink = document.getElementById('mainpage');
-logoLink.href = `/etusivu_ammattilainen/${asPatient}`;
+
 
