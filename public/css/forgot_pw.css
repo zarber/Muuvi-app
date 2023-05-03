@@ -1,0 +1,27 @@
+body {
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+    font-weight:700;
+}
+
+img {
+    width: 30%;
+    height: 40%;
+}
+
+h1 {
+    background: #2EC4B6;
+    padding: 10px 20px;
+    border-radius: 18px;
+    color: #1A1A1A;
+    font-weight: 700;
+    margin: 5px 0;
+    transition: .5s;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}

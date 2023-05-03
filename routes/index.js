@@ -2,8 +2,6 @@ const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const { authorize, ensureAuth, ensureGuest } = require('../middleware/auth');
-const DiaryEntry = require('../models/diaryModel')
-const ExerciseEntry = require('../models/exerciseModel')
 
 const Story = require('../models/StoryModel');
 
@@ -33,10 +31,9 @@ router.get('/etusivu_opiskelija', ensureAuth, authorize('patient'), async (req, 
   }
 });
 
-// @desc    Dashboard-staff
-// @route   GET /dashboard-staff
-router.get(
-  '/potilaslista', ensureAuth, authorize('nurse'), async (req, res) => {
+
+//@route authorize('nurse') landing page for nurse
+router.get('/potilaslista', ensureAuth, authorize('nurse'), async (req, res) => {
     try {
       res.render('patientlist', {
         layout: 'nurse/patientlist',
@@ -51,22 +48,12 @@ router.get(
   }
 );
 
-// @desc    Dashboard
-// @route   GET /dashboard
-// router.get('/dashboard', ensureAuth, async (req, res) => {
-//     try {
-//     const decoded = jwt.verify(req.cookies.cookieToken, process.env.SECRET);
-//     const stories = await Story.find({ user: decoded._id }).lean();
-//     // const stories = await Story.find({}).lean();
-//     res.render('dashboard', {
-//       // username: decoded.username,
-//       stories,
-//       });
-//     } catch (err) {
-//       console.error(err);
-//     res.render('error/500');
-//     }
-// });
+
+router.get('/salasana_unohtunut', (req, res) => {
+  res.render('forgot_pw', {
+    layout: 'forgot_pw',
+  });
+});
 
 router.get('/liikuntasuunnitelma_potilas', (req, res) => {
   res.render('student_excercise_plan', {

@@ -31,32 +31,38 @@ router.get('/login', ensureGuest, (req, res) => {
 
 // @desc    Login page
 // @route   POST /auth/login
-// router.post('/login', async (req, res, next) => {
-//   const { email, password } = req.body;
-
-//   try {
-//     const user = await User.login(email, password);
-//     createToken(res, req, user);
-//   } catch (error) {
-//     console.log(error);
-//     res.send(`<p>${error.message}</p><p>Virhe. <a href="/">Palaa takaisin.</a></p>`);   
-//     res.send(`<img src="/images/${king_julien.png}" alt="King Julien" width="300" height="300">`); 
-//   }
-// });
-
 router.post('/login', async (req, res, next) => {
   const { email, password } = req.body;
 
   try {
     const user = await User.login(email, password);
     createToken(res, req, user);
-  } catch (err) {
-    console.error(err);
-    res.render('error/login_register_error', {
-      layout: 'login_register_error',
-    });
+  } catch (error) {
+    console.log(error);
+    res.send(`
+      <div class="error-message">
+        <p>${error.message}<br><a href="/">Palaa takaisin</a></p>
+        <img src="/images/king_julien.png" alt="king julien">
+      </div>
+      <style>
+        .error-message {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .error-message p {
+          font-family: 'Quicksand', sans-serif;
+          font-weight:700;
+          font-size: 2rem;
+          background: #2EC4B6;
+          padding: 20px 20px;
+          border-radius: 18px;
+        }
+      </style>
+    `);   
   }
 });
+
 
 // @desc    logout user
 // @route   GET /auth/logout
@@ -83,7 +89,27 @@ router.post('/register', async (req, res, next) => {
     createToken(res, req, user);
   } catch (error) {
     console.log(error);
-    res.send(`<p>Virhe: ${error} <a href="/auth/register">Palaa takaisin.</a></p>`);
+    res.send(`
+      <div class="error-message">
+        <p>${error.message}<br><a href="/auth/register">Palaa takaisin</a></p>
+        <img src="/images/king_julien.png" alt="king julien">
+      </div>
+      <style>
+        .error-message {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .error-message p {
+          font-family: 'Quicksand', sans-serif;
+          font-weight:700;
+          font-size: 1.5rem;
+          background: #2EC4B6;
+          padding: 20px 20px;
+          border-radius: 18px;
+        }
+      </style>
+    `);
   }
 });
 
