@@ -4,18 +4,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Liikuntasuunnitelma</title>
-    <link rel="stylesheet" href="css/nurse/excercise_plan.css">
-    <link rel="stylesheet" href="css/nurse/frontpage_nurse.css">
+    <link rel="stylesheet" href="/public\css\nurse\excercise_plan.css">
+    <link rel="stylesheet" href="/public\css\nurse\frontpage_nurse.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/3a9d2d734c.js" crossorigin="anonymous"></script>
   </head>
-  <body> 
-    <div class="grid-container">
+  <body>
     {{> nav_nurse}}
     {{{body}}}
-    </div>
-    <script src="/frontpage_nurse.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="/exercisePlan_nurse.js"></script>
+    <script src="/frontpage_student.js"></script>
+    <script src="/routes\exerciseEntries.js"></script>
   </body>
 </html>
