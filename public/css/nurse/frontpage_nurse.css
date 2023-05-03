@@ -55,8 +55,15 @@ body {
 #logo {
     width: 150px;
     height: 55px;
-    margin-top: 0.9em;
     margin-left: 2em;
+}
+
+.logo {
+    width: 150px;
+    height: 55px;
+    background-color: #FF8055;
+    margin-top: 0.9em;
+    padding: 0;
 }
 .modalHelpNurse {
     display: none; 
@@ -201,52 +208,6 @@ body button:active{
 .fa-solid fa-question {
     margin-left: 10em;
     padding-bottom: 0.5em;
-}
-
-#emojis {
-    margin-top: 1em;
-    margin-bottom: 1em;
-    justify-self: end;
-}
-
-.fa-face-laugh-beam:hover {
-    color: #FF8055;
-}
-
-.fa-face-laugh-beam:active {
-    color: #2EC4B6;
-}
-
-.fa-face-smile-beam:hover {
-    color: #FF8055;
-}
-
-.fa-face-smile-beam:active {
-    color: #2EC4B6;
-}
-
-.fa-face-grimace:hover {
-    color: #FF8055;
-}
-
-.fa-face-grimace:active {
-    color: #2EC4B6;
-}
-
-.fa-face-frown-open:hover {
-    color: #FF8055;
-}
-
-.fa-face-frown-open:active {
-    color: #2EC4B6;
-}
-
-.fa-face-frown:hover {
-    color: #FF8055;
-}
-
-.fa-face-frown:active {
-    color: #2EC4B6;
 }
 
 .footer {

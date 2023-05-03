@@ -86,7 +86,7 @@ body button {
     transition: all 0.15s;
 }
 
- ul {
+.activities ul {
     position: relative;
     width: 450px;
     margin: 30px auto 0;
@@ -169,47 +169,6 @@ body button:active{
 
 .fa-face-frown {
     color: #9b2c07;
-}
-
-
-.fa-face-laugh-beam:hover {
-    color: #FF8055;
-}
-
-.fa-face-laugh-beam:active {
-    color: #2EC4B6;
-}
-
-.fa-face-smile-beam:hover {
-    color: #FF8055;
-}
-
-.fa-face-smile-beam:active {
-    color: #2EC4B6;
-}
-
-.fa-face-grimace:hover {
-    color: #FF8055;
-}
-
-.fa-face-grimace:active {
-    color: #2EC4B6;
-}
-
-.fa-face-frown-open:hover {
-    color: #FF8055;
-}
-
-.fa-face-frown-open:active {
-    color: #2EC4B6;
-}
-
-.fa-face-frown:hover {
-    color: #FF8055;
-}
-
-.fa-face-frown:active {
-    color: #2EC4B6;
 }
 
 form textarea {

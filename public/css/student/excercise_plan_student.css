@@ -11,7 +11,7 @@ body {
   grid-template-rows: auto 1fr auto;
   grid-template-areas:
     'header header header header header header'
-    ''main main main right right right''
+    'main main main main main main main'
     'footer footer footer footer footer footer';
   row-gap: 1em;
   background-color: white
@@ -26,8 +26,10 @@ body {
 }
 
 .main {
+  grid-area: main;
   height: 55em;
 }
+
 
 .exercise_container {
   display: flex;
@@ -83,7 +85,7 @@ body button {
   transition: all 0.15s;
 }
 
-ul {
+.exercise_entries ul {
   position: relative;
   width: 550px;
   margin: 30px auto 0;
