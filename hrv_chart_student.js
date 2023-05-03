@@ -1,16 +1,18 @@
+//https://www.amcharts.com/demos/column-with-rotated-series/
+
 //student's hrv chart
 am5.ready(function() {
 
-    // Fetch data from database
+    //Fetch data from database
     const fetchData = async () => {
-      // HRV data
+      //HRV data
       const response_hrvData = await fetch('/hrvResults');
       const jsonHrvData = await response_hrvData.json();
   
       const hrvData = [];
       for (var i = 0; i < 7; i++) {
           const newData = {
-              valueField1: jsonHrvData[i].readiness,
+              valueField1: parseInt(jsonHrvData[i].readiness),
               date: new Date(jsonHrvData[i].date)
           }
           hrvData.push(newData);
@@ -18,21 +20,21 @@ am5.ready(function() {
   
      console.log("Arvot: ", hrvData);
   
-      // Sending data to HRV chart
+      //Sending data to HRV chart
       generateData(hrvData);
   };
   
   fetchData();
   
-    // Create root element
+    //Create root element
     var root = am5.Root.new("student_hrv_chart");
     
-    // Set themes
+    //Set themes
     root.setThemes([
       am5themes_Animated.new(root)
     ]);
     
-    // Create chart
+    //Create chart
     var chart = root.container.children.push(am5xy.XYChart.new(root, {
       panX: true,
       panY: true,
@@ -41,11 +43,11 @@ am5.ready(function() {
       pinchZoomX: true
     }));
     
-    // Add cursor
+    //Add cursor
     var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {}));
     cursor.lineY.set("visible", false);
     
-    // Create axes
+    //Create axes
     var xRenderer = am5xy.AxisRendererX.new(root, { minGridDistance: 30 });
     xRenderer.labels.template.setAll({
       rotation: -90,
@@ -71,8 +73,9 @@ am5.ready(function() {
         strokeOpacity: 0.1
       })
     }));
+
     
-    // Create series
+    //Create series
     var series = chart.series.push(am5xy.ColumnSeries.new(root, {
       name: "Series 1",
       xAxis: xAxis,
@@ -84,28 +87,21 @@ am5.ready(function() {
         labelText: "{valueY}"
       })
     }));
+
     
-    series.columns.template.setAll({ cornerRadiusTL: 5, cornerRadiusTR: 5, strokeOpacity: 0 });
-    series.columns.template.adapters.add("fill", function(fill, target) {
-      return chart.get("colors").getIndex(series.columns.indexOf(target));
-    });
-    
-    series.columns.template.adapters.add("stroke", function(stroke, target) {
-      return chart.get("colors").getIndex(series.columns.indexOf(target));
-    });
-    
+    //Set date format
     root.dateFormatter.setAll({
         dateFormat: "dd-MM-yyyy",
         dateFields: ["valueX"]
       });
 
-    // Set data
+    //Set data
     function generateData(hrvData) {
     xAxis.data.setAll(hrvData);
     series.data.setAll(hrvData);
     }
       
-    // Make stuff animate on load
+    //Make stuff animate on load
     series.appear(100);
     chart.appear(100, 10);
     

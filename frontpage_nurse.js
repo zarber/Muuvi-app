@@ -1,12 +1,14 @@
 const fetchData = async () => {
-    // User data
+    //User data from the database
     const response_userData = await fetch('/api/user/users');
     const jsonUserData = await response_userData.json();
     console.log("jsonUserData", jsonUserData);
 
+    //Filtering out patients from jsonUserData
     const jsonPatientData = jsonUserData.filter(user => user.role === "patient");
     console.log("jsonPatientData", jsonPatientData);
 
+    //Adding patients to the list
     let innerHTML = "<ol>";
     if(jsonPatientData.length === 0) {
         innerHTML += "<li>Potilaita ei löytynyt</li>";

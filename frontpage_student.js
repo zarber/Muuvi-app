@@ -1,3 +1,4 @@
+//Top navigation bar
 function topNavFunction() {
   var x = document.getElementById("topNav");
   if (x.className === "navigation") {
@@ -7,6 +8,7 @@ function topNavFunction() {
   }
 }
 
+//Adding info-modal to the student's frontpage
 const infomodal = document.getElementById("infoModal");
 const infobtn = document.getElementById("info");
 const infospan = document.getElementsByClassName("closeInfo")[0];
@@ -18,6 +20,7 @@ infospan.onclick = function() {
 infomodal.style.display = "none";
 }
 
+//Adding help-modal to the student's frontpage
 const helpmodal = document.getElementById("helpModal");
 const helpbtn = document.getElementById("help-icon");
 const helpspan = document.getElementsByClassName("closeHelp")[0];
@@ -29,7 +32,7 @@ helpspan.onclick = function() {
 helpmodal.style.display = "none";
 }
 
-
+//List of aphorisms
 const aphorisms = [
   '"Liikunta on parasta terveydenhoitoa."',
   '"Liikunta lisää hyvää oloa."',
@@ -43,11 +46,11 @@ const aphorisms = [
   '"Sinun täytyy odottaa asioita itseltäsi ennen kuin pystyt niihin."',
   '"Se ei ole vuori, jonka valloitamme, vaan itsemme."'
 ];
-
+//Randomly choosing an aphorism from the list to website
 var randomAphorism = Math.floor(Math.random()*aphorisms.length);
 document.getElementById("aphorism").innerText = aphorisms[randomAphorism];
 
-
+//Adding a date to the diary
 document.addEventListener('DOMContentLoaded', () => {
 const currentDate = new Date();
 const formattedDate = currentDate.toISOString().slice(0, 10);

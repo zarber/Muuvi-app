@@ -13,7 +13,7 @@ h3 {
     display: grid;
     grid-template-areas:
       'header header header header header header'
-      'main main main right right right'
+      'main main main main right right'
       'footer footer footer footer footer footer';
     row-gap: 1em;
     background-color: white
@@ -203,6 +203,7 @@ h3 {
 
 .right {
     grid-area: right;   
+    margin-left: 6em;
 }
 
 #hrv_text {
@@ -221,9 +222,9 @@ h3 {
     height: 100%;
 }
 
-#activity {
-    width: 30%;
-    height: 20%;
+#daily_measurements_chart {
+    width: 85%;
+    height: 25%;
 }
 
 #hrv_measurement_button { 
@@ -353,13 +354,30 @@ form textarea {
     height: 5em;
 }
 
-@media only screen and (max-width: 1400px) {
+@media only screen and (max-width: 1390px) {
     .grid-container {
         grid-template-areas: 
         "header" "header"
         "right" "right"
         "main" "main"
         "footer" "footer";
+    }
+    .right {
+        margin-top: 2em;
+        display: flex;
+        flex-direction: inherit; 
+    }
+    .dailyactivity_div {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    .diary_div {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
     }
     .navigation a:not(img) {
         display: none;
@@ -371,19 +389,9 @@ form textarea {
         float: right;
         display: block;
     }
-    .right {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column; 
-    }
-    #activity {
-        width: 20%;
-        height: 25%;
-    }
 }
 
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 1390px) {
     .navigationresponsive #aphorism {
         display: none;
     }
@@ -415,5 +423,14 @@ form textarea {
     }
     .navigationresponsive a:active {
         color:#2EC4B6;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .right {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 }
