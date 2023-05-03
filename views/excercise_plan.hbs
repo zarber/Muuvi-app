@@ -1,42 +1,35 @@
-<div class="items">
-    <div class="lista">
-        <h2>Etunimi Sukunimi</h2>
-        <table>
-            <tr>
-                <th>Liikuntamuoto</th>
-                <th>Aika (Tunnit ja minuutit)</th>
-                <th>Vapaa kuvaus</th>
-            </tr>
-            <tr>
-                <td>Kävely</td>
-                <td>30min</td>
-                <td>2km kävelylenkki</td>
-                <td><button type="button" id="button2">Poista</button></td>
-            </tr>
-            <tr>
-                <td>Kävely</td>
-                <td>1h 20min</td>
-                <td>5km kävelylenkki</td>
-                <td><button type="button" id="button2">Poista</button></td>
-            </tr>
-            <tr>
-                <td>Kävely</td>
-                <td>30min</td>
-                <td>2km kävelylenkki</td>
-                <td><button type="button" id="button2">Poista</button></td>
-                </tr>
-                <tr>
-                    <td>Kävely</td>
-                    <td>1h 20min</td>
-                    <td>5km kävelylenkki</td>
-                    <td><button type="button" id="button2">Poista</button></td>
-                </tr>
-        </table>
-        <div class="buttons">
-            <button type="button">Lisää uusi sarake</button>              
-            <button type="button">Tallenna</button>
-        </div>
-    </div>
-</div>
-<div class="footer"></div>
+<div class="main">
+  <div class="exercise">
+      <h1>Lisää uusi liikuntasuunnitelma</h1>
+      <form action="/Entries" method="post">
+        <label for="exercise_type">Liikuntamuoto:</label>
+        <select name="exercise_type" id="exercise_type" required>
+            <option value="Kävely">Kävely</option>
+            <option value="Juoksu">Juoksu</option>
+            <option value="Uinti">Uinti</option>
+            <option value="Sali">Sali</option>
+        </select>
+        <br>
 
+        <label for="exercise-duration">Liikunnan kesto:</label>
+        <input type="number" Value="0" id="exercise_duration_hour" name="exercise_duration_hour" min="0" max="24" step="1" placeholder="Tunnit">
+        <input type="number" Value="0" id="exercise_duration_minute" name="exercise_duration_minute" min="0" max="59" step="1" placeholder="Minuutit">
+        <br>
+        <label for="exercise_date">Kuvaus liikunnalle:</label>
+        <input type="text" name="exercise_date" id="exercise_date" maxlength="30"></input>
+        <br>
+        <button id="exercise_save" type="submit">Tallenna</button>
+      </form>
+  </div>
+  <div class="exercise_history">
+    <h1>Tallennetut liikuntasuunnitelmat</h1>
+    <ul id="exercise_entries">
+      {{#each exerciseEntries}}
+      <li data-id="{{this._id}}"></li>
+      {{/each}}
+    </ul>
+    <button id="load-more">Lataa lisää</button>
+  </div>
+</div>
+
+<div class="footer"></div>
