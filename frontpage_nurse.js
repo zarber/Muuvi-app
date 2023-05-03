@@ -13,23 +13,27 @@ const fetchData = async () => {
     } else {
         for (const patient of jsonPatientData) {
             console.log("patient", patient);
-            innerHTML += `<li>${patient.firstname} ${patient.lastname}<br>${patient.email}</li>`;
+            innerHTML += `<li><a href="/etusivu_ammattilainen/${patient._id}">${patient.firstname} ${patient.lastname}</a><br>${patient.email}</li>`;
         }
     }
     innerHTML += "</ol>";
 
     const userList = document.getElementsByClassName('list');
     userList[0].innerHTML = innerHTML;
-
 };
 
+
 fetchData();
-
-
 //Adding help-modal to the nurse's frontpage
 const helpmodal = document.getElementById("helpModalNurse");
 const helpbtn = document.getElementById("help-icon");
 const helpspan = document.getElementsByClassName("closeHelpNurse")[0];
+
+const exercisePlanLink = document.getElementById('exercise_plan_edit');
+const pathname = window.location.pathname;
+const asPatient = pathname.split('/').pop();
+console.log(asPatient);
+exercisePlanLink.href = `/liikuntasuunnitelma/${asPatient}`;
 
 helpbtn.onclick = function() {
 helpmodal.style.display = "block";
