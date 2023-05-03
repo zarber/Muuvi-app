@@ -31,8 +31,17 @@ li{
     background-color: #2EC4B6;
     outline:solid 1px black;
     padding: 12px;
-    font-size: 20px;
+    font-size: 15px;
     text-align: center;
+}
+
+li a {
+    background-color: #2EC4B6;
+    font-size: 20px;
+}
+
+li a:hover {
+    color: #FF8055;
 }
 
 #logo {
@@ -41,6 +50,7 @@ li{
 }
 
 .footer {
+    grid-area: footer;
     background-color:#2EC4B6;
     margin-top: 5%;
     width: 100%;

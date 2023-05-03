@@ -6,7 +6,6 @@ body {
   }
   
   .grid-container {
-    min-height: 100vh;
     display: grid;
     grid-template-rows: auto 1fr auto;
     grid-template-areas:
@@ -23,6 +22,10 @@ body {
     justify-content: space-evenly;
     height: 6em;
     background-color: #FF8055;
+  }
+
+  .main {
+    height: 55em;
   }
   
   .exercise_container {
