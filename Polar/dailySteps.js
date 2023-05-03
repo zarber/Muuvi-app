@@ -2,11 +2,11 @@ const express = require('express');
 const fetch = require('node-fetch');
 const app = express();
 
-
+// this is integrated tot Polar/app.js
 app.get('/api/daily-steps', async (req, res) => {
   try {
-    const token = 'your_access_token'; // Replace this with the actual access token
-    const userId = 'your_user_id'; // Replace this with the actual user ID
+    const token = 'your_access_token';
+    const userId = 'your_user_id';
     const response = await fetch(`https://www.polaraccesslink.com/v3/daily-activity/${userId}`, {
       headers: {
         'Authorization': `Bearer ${token}`,
