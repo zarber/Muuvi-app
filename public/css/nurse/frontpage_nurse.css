@@ -52,18 +52,11 @@ body {
     flex-direction: column;
 }
 
-.footer {
-    grid-area: footer;
-    margin-top: 2em;
-    background-color:#2EC4B6;
-    width: 100%;
-    height: 5em;
-}
-
 #logo {
     width: 150px;
     height: 55px;
     margin-top: 0.9em;
+    margin-left: 2em;
 }
 .modalHelpNurse {
     display: none; 
@@ -257,6 +250,7 @@ body button:active{
 }
 
 .footer {
+    grid-area: footer;
     background-color:#2EC4B6;
     margin-top: 5%;
     width: 100%;

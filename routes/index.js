@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const { authorize, ensureAuth, ensureGuest } = require('../middleware/auth');
+const DiaryEntry = require('../models/diaryModel')
+const ExerciseEntry = require('../models/exerciseModel')
 
 const Story = require('../models/StoryModel');
 
@@ -61,6 +63,12 @@ router.get('/liikuntasuunnitelma_potilas', (req, res) => {
   });
 });
 
+router.get('/liikuntasuunnitelma/:id', (req, res) => {
+  res.render('excercise_plan', {
+    layout: 'nurse/excercise_plan',
+  });
+});
+
 router.get('/aktiviteetit_ja_paivakirja', (req, res) => {
   res.render('activities_and_diary', {
     layout: 'student/activities_and_diary',
@@ -73,14 +81,7 @@ router.get('/hrv_mittaukset', (req, res) => {
   });
 });
 
-
-router.get('/liikuntasuunnitelma', (req, res) => {
-  res.render('excercise_plan', {
-    layout: 'nurse/excercise_plan',
-  });
-});
-
-router.get('/etusivu_ammattilainen', (req, res) => {
+router.get('/etusivu_ammattilainen/:id', (req, res) => {
   res.render('frontpage_nurse', {
     layout: 'nurse/frontpage_nurse',
   });

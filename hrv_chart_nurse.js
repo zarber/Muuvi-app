@@ -12,8 +12,8 @@ am5.ready(function() {
     const hrvData = [];
     for (var i = 0; i < jsonHrvData.length; i++) {
         const newData = {
-            valueField1: jsonHrvData[i].readiness.toFixed(2),
-            valueField2: jsonHrvData[i].stress.toFixed(2),
+            valueField1: jsonHrvData[i].readiness,
+            valueField2: jsonHrvData[i].stress,
             date: new Date(jsonHrvData[i].date).getTime()
         }
         hrvData.push(newData);

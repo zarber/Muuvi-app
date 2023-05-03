@@ -25,6 +25,10 @@ body {
   background-color: #FF8055;
 }
 
+.main {
+  height: 55em;
+}
+
 .exercise_container {
   display: flex;
   grid-template-columns: 1fr 1fr;
