@@ -10,13 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
   });
-  const SaveButton = document.querySelector('#exercise_save')
+
   const loadMoreButton = document.querySelector('#load-more');
 
-  SaveButton.addEventListener('click', async () => {
-  const skip = document.querySelectorAll('#exercise_entries li').length;
-  await fetchExerciseEntries(skip);
-});
 loadMoreButton.addEventListener('click', async () => {
   const skip = document.querySelectorAll('#exercise_entries li').length;
   await fetchExerciseEntries(skip);
