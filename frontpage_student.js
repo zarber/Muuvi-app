@@ -34,17 +34,17 @@ helpmodal.style.display = "none";
 
 //List of aphorisms
 const aphorisms = [
-  '"Liikunta on parasta terveydenhoitoa."',
-  '"Liikunta lisää hyvää oloa."',
-  '"Et koskaan tiedä rajojasi, ellet ylitä niitä."',
-  '"Pitkäkin matka täytyy aloittaa yhdellä askeleella."',
-  '"Kaikki on mahdollista. Mahdottoman toteuttaminen vain vie hieman enemmän aikaa."',
-  '"Tulevaisuus tulee. Vain sinä voit päättää, mihin se menee."',
-  '"Tee yksi ihminen onnelliseksi joka päivä — vaikkapa se olisit sinä itse."',
-  '"Jokainen voi kuntoilla omien voimiensa mukaan."',
-  '"Loppujen lopuksi kadumme vain mahdollisuuksia, joihin emme tarttuneet."',
-  '"Sinun täytyy odottaa asioita itseltäsi ennen kuin pystyt niihin."',
-  '"Se ei ole vuori, jonka valloitamme, vaan itsemme."'
+  '"Liikunta on parasta terveydenhoitoa"',
+  '"Liikunta lisää hyvää oloa"',
+  '"Et koskaan tiedä rajojasi, ellet ylitä niitä"',
+  '"Pitkäkin matka täytyy aloittaa yhdellä askeleella"',
+  '"Kaikki on mahdollista. Mahdottoman toteuttaminen vain vie hieman enemmän aikaa"',
+  '"Tulevaisuus tulee. Vain sinä voit päättää, mihin se menee"',
+  '"Tee yksi ihminen onnelliseksi joka päivä — vaikkapa se olisit sinä itse"',
+  '"Jokainen voi kuntoilla omien voimiensa mukaan"',
+  '"Loppujen lopuksi kadumme vain mahdollisuuksia, joihin emme tarttuneet"',
+  '"Sinun täytyy odottaa asioita itseltäsi ennen kuin pystyt niihin"',
+  '"Se ei ole vuori, jonka valloitamme, vaan itsemme"'
 ];
 //Randomly choosing an aphorism from the list to website
 var randomAphorism = Math.floor(Math.random()*aphorisms.length);
