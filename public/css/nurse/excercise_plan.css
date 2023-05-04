@@ -57,106 +57,125 @@ body {
   .activities {
     text-align: center;
   }
-  
-  
-  #exercise_save {
-    width: 150px;
-    height: 40px;
+
+select {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.2em;
+  width: 30%;
   }
+
+label {
+  font-size: 1.5em;
+}
+
+#exercise_duration_hour, #exercise_duration_minute {
+  width: 10%;
+}
+
+#exercise_date {
+  width: 30%;
+  height: 20%;
+}
   
-  body button {
-    display: inline-block;
-    padding: 12px 20px;
-    margin-top: 1.2em;
-    margin-left: 0.5em;
-    margin-right: 0.5em;
-    height: 40px;
-    border: 0;
-    border-radius: 18px;
-    text-decoration:none;
-    font-family: 'Quicksand', sans-serif;
-    font-size: 16px;
-    font-weight:700;
-    background-color: #FFEDD8;
-    text-align:center;
-    transition: all 0.15s;
+#exercise_save {
+  width: 150px;
+  height: 40px;
+}
+
+body button {
+  display: inline-block;
+  padding: 12px 20px;
+  margin-top: 1.2em;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  height: 40px;
+  border: 0;
+  border-radius: 18px;
+  text-decoration:none;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 16px;
+  font-weight:700;
+  background-color: #FFEDD8;
+  text-align:center;
+  transition: all 0.15s;
+}
+
+ul {
+  position: relative;
+  width: 550px;
+  margin: 30px auto 0;
+  padding: 10px;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+ul li {
+  display: flex;
+  background: #2EC4B6;
+  padding: 10px 20px;
+  border-radius: 18px;
+  color: #1A1A1A;
+  font-weight: 900;
+  margin: 5px 0;
+  transition: .5s;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.exercise_history {
+  position: relative;
+}
+
+#log_out {
+  margin-left: 8%;
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+body button:hover{
+  color:#2EC4B6;
+  border-color:#2EC4B6;
+}
+
+body button:active{
+  color:#FF8055;
+  border-color:#FF8055;
+}
+
+.load-more-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+/* form textarea {
+  background-color:#CBF3F0;
+  width: 80%;
+  height: 150px;
+  margin-top: 1em;
+  font-family: 'Quicksand', sans-serif;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 0.2em solid #2EC4B6;
+  border-radius: 2em;
+  resize: none;
+} */
+
+
+.footer {
+  grid-area: footer;
+  background-color: #2EC4B6;
+  width: 100%;
+  height: 6em;
+}
+
+@media only screen and (max-width: 1050px) {
+  .grid-container {
+      grid-template-areas: 
+      "header" "header"
+      "main" "main"
+      "right" "right"
+      "footer" "footer";
   }
-  
-  ul {
-    position: relative;
-    width: 550px;
-    margin: 30px auto 0;
-    padding: 10px;
-    box-sizing: border-box;
-    list-style: none;
-  }
-  
-  ul li {
-    display: flex;
-    background: #2EC4B6;
-    padding: 10px 20px;
-    border-radius: 18px;
-    color: #1A1A1A;
-    font-weight: 900;
-    margin: 5px 0;
-    transition: .5s;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .exercise_history {
-    position: relative;
-  }
-  
-  #log_out {
-    margin-left: 8%;
-    padding-left: 2em;
-    padding-right: 2em;
-  }
-  
-  body button:hover{
-    color:#2EC4B6;
-    border-color:#2EC4B6;
-  }
-  
-  body button:active{
-    color:#FF8055;
-    border-color:#FF8055;
-  }
-  
-  .load-more-wrapper {
-    display: flex;
-    justify-content: center;
-    margin-top: 1em;
-    margin-bottom: 1em;
-  }
-  
-  /* form textarea {
-    background-color:#CBF3F0;
-    width: 80%;
-    height: 150px;
-    margin-top: 1em;
-    font-family: 'Quicksand', sans-serif;
-    padding: 12px 20px;
-    box-sizing: border-box;
-    border: 0.2em solid #2EC4B6;
-    border-radius: 2em;
-    resize: none;
-  } */
-  
-  .footer {
-    grid-area: footer;
-    background-color: #2EC4B6;
-    width: 100%;
-    height: 6em;
-  }
-  
-  @media only screen and (max-width: 1050px) {
-    .grid-container {
-        grid-template-areas: 
-        "header" "header"
-        "main" "main"
-        "right" "right"
-        "footer" "footer";
-    }
-  }
+}

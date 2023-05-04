@@ -5,7 +5,6 @@ const { authorize, ensureAuth, ensureGuest } = require('../middleware/auth');
 const DiaryEntry = require('../models/diaryModel')
 const ExerciseEntry = require('../models/exerciseModel')
 
-const Story = require('../models/StoryModel');
 
 // @desc    Landing page
 // @route   GET /
@@ -17,13 +16,9 @@ router.get('/', ensureGuest, (req, res) => {
 
 router.get('/etusivu_opiskelija', ensureAuth, authorize('patient'), async (req, res) => {
   try {
-    const stories = await Story.find({ user: req.user._id }).lean();
-    // const stories = await Story.find({}).lean();
-
     res.render('frontpage_student', {
       layout: 'student/frontpage_student',
       username: req.user.username,
-      stories,
     });
   } catch (err) {
     console.error(err);

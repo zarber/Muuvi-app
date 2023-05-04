@@ -9,7 +9,6 @@ const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const favicon = require('serve-favicon');
 const methodOverride = require('method-override');
-const workoutRoutes = require('./routes/api/workouts');
 const userRoutes = require('./routes/user');
 const diaryEntriesRoutes = require('./routes/diaryEntries');
 const exerciseEntriesRoutes = require('./routes/exerciseEntries');
@@ -23,7 +22,6 @@ mongoose.set('strictQuery', true);
 const app = express();
 
 // middleware
-
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cookieParser());
@@ -71,7 +69,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', require('./routes/index'));
 app.use('/auth', require('./routes/auth'));
 app.use('/activities_and_diary', require('./routes/diaryEntries'));
-app.use('/api/workouts', workoutRoutes);
 app.use('/api/user', userRoutes);
 app.use('/diaryEntries', diaryEntriesRoutes);
 app.use('/exerciseEntries', exerciseEntriesRoutes);
